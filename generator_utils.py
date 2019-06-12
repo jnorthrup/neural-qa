@@ -201,6 +201,7 @@ def extract_variables(query):
     query_form_pattern = r'^.*?where'
     query_form_match = re.search(query_form_pattern, query, re.IGNORECASE)
     if query_form_match:
+        # Checking for question marks.
         letter_pattern = r'\?(\w)'
         variables = re.findall(letter_pattern, query_form_match.group(0))
     return variables

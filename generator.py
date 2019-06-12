@@ -21,6 +21,7 @@ import random
 import re
 import sys
 import traceback
+from tqdm import tqdm
 
 from generator_utils import log_statistics, save_cache, query_dbpedia, strip_brackets, encode, read_template_file
 
@@ -165,13 +166,16 @@ def build_dataset_pair(binding, template):
 
 def generate_dataset(templates, output_dir, file_mode):
     cache = dict()
+    """
+    Make directory is already there.
+    """
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
     it = 0
     with open(output_dir + '/data_300.en', file_mode) as english_questions, open(output_dir + '/data_300.sparql', file_mode) as sparql_queries:
-        for template in templates:
+        for template in tqdm(templates):
             it = it + 1
-            print "for {}th template".format(it)
+            #print "for {}th template".format(it)
             try:
                 results = get_results_of_generator_query(cache, template)
                 bindings = extract_bindings(results["results"]["bindings"], template)
@@ -279,6 +283,10 @@ def normalize (ontology_class):
 
 
 if __name__ == '__main__':
+
+    """
+    Parsing the commandline arguments to get necessary information
+    """
     parser = argparse.ArgumentParser()
     parser.add_argument('--continue', dest='continue_generation', action='store_true', help='Continue after exception')
     requiredNamed = parser.add_argument_group('required named arguments')
@@ -311,10 +319,11 @@ if __name__ == '__main__':
     sys.setdefaultencoding("utf-8")
 
     not_instanced_templates = collections.Counter()
+    #Elements as keys and counts as values.
     used_resources = collections.Counter(json.loads(open(resource_dump_file).read())) if use_resources_dump else collections.Counter()
     file_mode = 'a' if use_resources_dump else 'w'
     templates = read_template_file(template_file)
-    print len(templates)
+    #print len(templates)
     try:
         generate_dataset(templates, output_dir, file_mode)
         # print "lol"
