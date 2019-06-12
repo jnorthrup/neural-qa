@@ -8,7 +8,7 @@ import os
 from bs4 import BeautifulSoup
 from tqdm import tqdm
 
-def get_properties(url, output = "get_properties.csv", project_name):
+def get_properties(url,  project_name="test_project", output_file = "get_properties.csv"):
     """
     This function extracts the information regarding : [Name, Label, Domain, Range] from a page like this :
     http://mappings.dbpedia.org/server/ontology/classes/Place and saves it in a file in CSV format.
@@ -17,7 +17,7 @@ def get_properties(url, output = "get_properties.csv", project_name):
     soup = BeautifulSoup(page, "html.parser")
     if(not os.path.isdir(project_name)):
         os.makedirs(project_name)
-    output_file = open(project_name+"/" + output, 'w')
+    output_file = open(project_name+"/" + output_file, 'w')
     fl = 0
     accum = []
     for rows in tqdm(soup.find_all("tr")):
@@ -36,7 +36,6 @@ def get_properties(url, output = "get_properties.csv", project_name):
         final = name + "," + label + "," + dom + "," + rng
         accum.append(final)
         output_file.write(final+"\n")
-        accum.append([name, label, dom, rng])
     output_file.close()
     return accum
 
@@ -60,7 +59,7 @@ if __name__ == "__main__":
         '--project_name', dest='project_name', metavar='project_name', help='test', required=True)
     args = parser.parse_args()
     url = args.url
-    out_put = args.out_put
+    output_file = args.out_put
     project_name = args.project_name
-    get_properties(url, out_put, project_name)
+    get_properties(url = url, project_name= project_name,  output_file = output_file)
     pass

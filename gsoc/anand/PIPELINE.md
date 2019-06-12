@@ -8,6 +8,21 @@ The final output file has each row of the form:
 
 ## Steps to follow
 
+### Oneliner 
+
+Here is the skeleton of the command:
+
+```bash 
+python final_formatting.py --rs <0 IF TO RUN THE WHOLE CODE | 1 TO RUN THE FUNTION OF THIS PYHTON SOURCE ONLY> --uri_file <URI FREQUENCY FILE TSV> --url <WEBPAGE URL> --output_file <OUTPUT FILE NAME > --project_name <PROJECT NAME> --namespace <NAMESPACE>
+```
+
+Example:
+
+```bash 
+python final_formatting.py --rs 0 --uri_file ../dbpedia-201610-properties.tsv --url http://mappings.dbpedia.org/server/ontology/classes/Place --output_file test_res.csv --project_name test2 --namespace ontology
+
+```
+
 ### STEP 1 - Get properties from web page
 
 Command:
@@ -17,9 +32,7 @@ python get_properties.py --url <WEBPAGE URL> --output_file <OUTPUT FILE NAME > -
 ```
 
 - `--url <WEBPAGE URL>`: --url argument is the webpage from where property metadata is to scraped example: http://mappings.dbpedia.org/server/ontology/classes/Place
-
 - `--output_file <OUTPUT FILE NAME >`:  --output_file argument is the file where the output data of this function will be stored in CSV format.
-
 - `--project_name <PROJECT NAME>`:  --project_name argument is the name given to the test case, a seperate folder with ths name will be ceated where the data files related to this project will be stored.
 
 ### STEP 2 - Get number of occurrences and URI
@@ -31,37 +44,62 @@ Store only the rows of required namespace properties
 Command:
 
 ``` bash
-python integrate.py --namespace --input_file temp.csv --output_file integrated_file.csv --uri_file dbpedia-201610-properties.tsv
+python integrate.py --uri_file <URI FREQUENCY FILE TSV> --input_file <OUTPUT FROM PREVIOUS STEP> --output_file <OUTPUT FILE> --project_name <PROJECT NAME> --namespace <NAMESPACE>
 ```
 
-- Output file: manual-annotation-updated-v2.csv (change it in the file if needed)
-- Change the namespace to the required (it is 'ontology' right now) 
+- `--uri_file <URI FREQUENCY FILE TSV>`: Files with frequency information
+- `--input_file <OUTPUT FROM PREVIOUS STEP>`: Output file from previous step  
+- `--output_file <OUTPUT FILE>` manual-annotation-updated-v2.csv (change it in the file if needed)
+- `--namespace <NAMESPACE>` Change the namespace to the required (it is 'ontology' right now)
+- `--project_name <PROJECT NAME>` Project Name
 
 ### STEP 4 - MVE generation
 
 Command:
 
 ```bash
-python decision_tree.py data/manual-annotation-updated-v2.csv
+python decision_tree.py -input_file <OUTPUT FROM PREVIOUS STEP> --output_file <OUTPUT FILE> --project_name <PROJECT NAME>
 ```
 
-- Output file: GS_with_mve.csv
+- `--input_file <OUTPUT FROM PREVIOUS STEP>`: Output file from previous step  
+- `--output_file <OUTPUT FILE>` Output file name
+- `--project_name <PROJECT NAME>` Project Name
 
 ### STEP 5 - SPARQL Query Template and Generator Query generation
 
 Command:
 
 ```bash
-python sparql_generator.py GS_with_mve.csv
+python sparql_generator.py -input_file <OUTPUT FROM PREVIOUS STEP> --output_file <OUTPUT FILE> --project_name <PROJECT NAME>
 ```
+
+- `--input_file <OUTPUT FROM PREVIOUS STEP>`: Output file from previous step  
+- `--output_file <OUTPUT FILE>` Output file name
+- `--project_name <PROJECT NAME>` Project Name
 
 ### STEP 6 - Formatting the data into required format
 
 Command:
 
+Only run processes in this file and not the whole code:
+
 ```bash
-python final_formatting.py data/GS-v3.csv data/annotations_place_v2.csv
+python final_formatting.py --input_file <OUTPUT FROM PREVIOUS STEP> --rs <0 IF TO RUN THE WHOLE CODE | 1 TO RUN THE FUNTION OF THIS PYHTON SOURCE ONLY>
 ```
+
+Run the whole flow
+
+```bash
+python final_formatting.py --rs <0 IF TO RUN THE WHOLE CODE | 1 TO RUN THE FUNTION OF THIS PYHTON SOURCE ONLY> --uri_file <URI FREQUENCY FILE TSV> --url <WEBPAGE URL> --output_file <OUTPUT FILE NAME > --project_name <PROJECT NAME> --namespace <NAMESPACE>
+```
+
+- `--input_file <OUTPUT FROM PREVIOUS STEP>`: Output file from previous step  
+- `--output_file <OUTPUT FILE>`: Output file name
+- `--project_name <PROJECT NAME>`: Project Name
+- `--uri_file <URI FREQUENCY FILE TSV>`: Files with frequency information
+- `--namespace <NAMESPACE>`: Change the namespace to the required (it is 'ontology' right now)
+- `--project_name <PROJECT NAME>`: Project Name
+- `--rs <VALUE>`: 0 If To Run the whole code (whole flow) | 1 to run the function of this python source only
 
 ### STEP 7 - Follow the original data generation and training steps (readme of master branch)
 

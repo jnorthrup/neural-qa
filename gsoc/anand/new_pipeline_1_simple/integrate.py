@@ -2,6 +2,8 @@ import sys
 import argparse
 from tqdm import tqdm
 from get_properties import get_properties
+from tqdm import tqdm
+
 """
 How was the tsv file created in the first place?
 - 	The tsv file is read.
@@ -13,13 +15,12 @@ How was the tsv file created in the first place?
 """
 
 
-def integrate(namespace, input_file="Pleaes enter a valid file name", uri_file, output_file, project_name, url ="Enter a valid URL"):
+def integrate(namespace,  uri_file, output_file="integrate.csv", project_name="test_project", url="Enter a valid URL", input_file="Pleaes enter a valid file name"):
 	print("Reading the TSV file: ")
 	open_tsv = open(uri_file, 'r')
 	read_tsv = open_tsv.readlines()
 	diction = {}
 	for line in tqdm(read_tsv):
-
 		line = line.strip().split('\t')
 		if line[0].split('/')[-2] != namespace:
 			continue
@@ -41,19 +42,21 @@ def integrate(namespace, input_file="Pleaes enter a valid file name", uri_file, 
 		adding a new line character and then going for the next 
 		iteration after adding it to a variable final (string addition)
 	"""
-	print("Reading the input file: ")
+	
 
 	if (__name__ == "__main__"):
+		print("Reading the input file: ")
 		open_inp = open(input_file, 'r')
 		line_inp = open_inp.readlines()
 
 	if (not __name__ == "__main__"):
-		line_inp = get_properties(url, "get_properties.csv", project_name)
+		line_inp = get_properties(url=url, output_file="get_properties.csv", project_name =  project_name)
 
 	cnt, tot = 0, 0
 	final = ""
-
+	accum = []
 	for in_line in tqdm(line_inp):
+		
 		line = in_line.strip().split(',')
 		in_line = line[0]
 		tot += 1
@@ -70,6 +73,7 @@ def integrate(namespace, input_file="Pleaes enter a valid file name", uri_file, 
 			# print in_line
 
 		final += ",".join(line)
+		accum.append(",".join(line))
 		final += '\n'
 
 	"""
@@ -77,10 +81,12 @@ def integrate(namespace, input_file="Pleaes enter a valid file name", uri_file, 
 	as given in the command line argument.
 	"""
 	# print final
-	f = open(args.out, 'w')
+	f = open(project_name+"/"+output_file, 'w')
 	f.write(final)
 	print("**************************************")
-	print("Total number of entity whose URI was found: "+str(cnt) + "\nTotal number of entities present: " + str(tot))
+	print("Total number of entity whose URI was found: "+str(cnt) +
+			"\nTotal number of entities present: " + str(tot))
+	return accum
 
 
 if __name__ == "__main__":
@@ -105,5 +111,6 @@ if __name__ == "__main__":
     uri_file = args.uri
     output_file = args.out
     project_name = args.project_name
-    integrate(namespace, input_file, uri_file, output_file, project_name)
+    integrate(namespace,  uri_file, output_file,
+              project_name, "Enter a valid URL", input_file)
     pass
