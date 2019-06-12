@@ -1,14 +1,10 @@
 # Automatic Training Data Generation For Neural QA Model
 
-The final output file has each row of the form:
-
-``` bash
-['Property', 'Label ', 'Range', 'Fuzzy Score', 'Comment about expr', 'URI', 'Number of Occurrences', 'MVE', 'Optimal Expression', 'SPARQL Query Template', 'Generator Query\r\n']
-```
+Follow the below given steps
 
 ## Steps to follow
 
-### Oneliner 
+### One - liner
 
 Here is the skeleton of the command:
 
