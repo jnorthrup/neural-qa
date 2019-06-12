@@ -8,7 +8,7 @@ Section to parse the command line arguments.
 """
 
 
-def sparql_generator(input_file, project_name, output_file="decision_tree.csv", url="Use a valid URL", uri_file="Proper URI file", namespace="Valid namespace"):
+def sparql_generator(input_file, project_name, output_file="sparql_generator.csv", url="Use a valid URL", uri_file="Proper URI file", namespace="Valid namespace"):
 	if __name__ == "__main__":
 		f = open(input_file, 'r')
 		lines = f.readlines()
@@ -42,14 +42,14 @@ def sparql_generator(input_file, project_name, output_file="decision_tree.csv", 
 			continue
 		line = line.strip().split(',')
 		# print lines
-		if line[5] != '':
+		if line[4] != '':
 			# print line[5]
 			# It was found the the MVE and OE was also required hence:
 			#line[-2] = 'SELECT ?x WHERE { <X> <' + line[5] + '> ?x }'
 			#line[-1] = 'SELECT ?a WHERE { ?a <' + line[5] + '> [] . ?a a <http://dbpedia.org/ontology/Place> }'
-			line.append('SELECT ?x WHERE { <X> <' + line[5] + '> ?x }')
+			line.append('SELECT ?x WHERE { <X> <' + line[4] + '> ?x }')
 			line.append(
-				'SELECT ?a WHERE { ?a <' + line[5] + '> [] . ?a a <http://dbpedia.org/ontology/Place> }')
+				'SELECT ?a WHERE { ?a <' + line[4] + '> [] . ?a a <http://dbpedia.org/ontology/Place> }')
 
 		final += ",".join(line)
 		accum.append(",".join(line))
@@ -75,11 +75,11 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     requiredNamed = parser.add_argument_group('Required Arguments')
     requiredNamed.add_argument('--input_file', dest='inp', metavar='inp',
-                               help='eg: File which contains metadata of properties', required=True)
+                               help='Output from previous step', required=True)
     requiredNamed.add_argument('--output_file', dest='out', metavar='out',
                                help='File in which you want to store output', required=True)
     requiredNamed.add_argument('--project_name', dest='project_name',
-                               metavar='project_name', help='test', required=True)
+                               metavar='project_name', help='eg.:test', required=True)
     args = parser.parse_args()
     input_file = args.inp
     output_file = args.out

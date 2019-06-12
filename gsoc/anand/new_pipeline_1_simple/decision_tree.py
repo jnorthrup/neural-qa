@@ -83,7 +83,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     requiredNamed = parser.add_argument_group('Required Arguments')
     requiredNamed.add_argument('--input_file', dest='inp', metavar='inp',
-                               help='eg: File which contains metadata of properties', required=True)
+                               help='Output from previous step', required=True)
     requiredNamed.add_argument('--output_file', dest='out', metavar='out',
                                help='File in which you want to store output', required=True)
     requiredNamed.add_argument('--project_name', dest='project_name',

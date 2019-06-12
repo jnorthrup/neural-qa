@@ -19,7 +19,7 @@ python final_formatting.py --rs <0 IF TO RUN THE WHOLE CODE | 1 TO RUN THE FUNTI
 Example:
 
 ```bash 
-python final_formatting.py --rs 0 --uri_file ../dbpedia-201610-properties.tsv --url http://mappings.dbpedia.org/server/ontology/classes/Place --output_file test_res.csv --project_name test2 --namespace ontology
+python final_formatting.py --rs 0 --uri_file ../dbpedia-201610-properties.tsv --url http://mappings.dbpedia.org/server/ontology/classes/Place --output_file test_res.csv --project_name test --namespace ontology
 
 ```
 
@@ -84,7 +84,7 @@ Command:
 Only run processes in this file and not the whole code:
 
 ```bash
-python final_formatting.py --input_file <OUTPUT FROM PREVIOUS STEP> --rs <0 IF TO RUN THE WHOLE CODE | 1 TO RUN THE FUNTION OF THIS PYHTON SOURCE ONLY>
+python final_formatting.py --input_file <OUTPUT FROM PREVIOUS STEP> --rs <0 IF TO RUN THE WHOLE CODE | 1 TO RUN THE FUNTION OF THIS PYHTON SOURCE ONLY> --project_name <PROJECT NAME> --output_file <OUTPUT FILE>
 ```
 
 Run the whole flow

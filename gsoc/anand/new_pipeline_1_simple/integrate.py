@@ -98,7 +98,7 @@ if __name__ == "__main__":
     requiredNamed.add_argument(
         '--namespace', dest='ns', metavar='ns', help='eg: "ontology"', required=True)
     requiredNamed.add_argument('--input_file', dest='inp', metavar='inp',
-                               help='eg: File which contains metadata of properties', required=True)
+                               help='Output from previous step', required=True)
     requiredNamed.add_argument('--uri_file', dest='uri', metavar='uri',
                                help='eg: File which contains uri and number of occurrences of properties', required=True)
     requiredNamed.add_argument('--output_file', dest='out', metavar='out',

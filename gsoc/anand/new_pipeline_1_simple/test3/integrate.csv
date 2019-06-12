@@ -1,0 +1,34 @@
+architect,architect,ArchitecturalStructure,Architect,http://dbpedia.org/ontology/architect,18048
+architectualBureau,architectual bureau,ArchitecturalStructure,Company,,
+architecturalStyle,architectural style,ArchitecturalStructure,owl:Thing,http://dbpedia.org/ontology/architecturalStyle,34580
+buildingEndYear,building end year,ArchitecturalStructure,xsd:gYear,http://dbpedia.org/ontology/buildingEndYear,63
+buildingStartYear,building start year,ArchitecturalStructure,xsd:gYear,http://dbpedia.org/ontology/buildingStartYear,2337
+buildingType,buildingType,Building,owl:Thing,,
+construction,construction,ArchitecturalStructure,owl:Thing,,
+constructionMaterial,construction material,ArchitecturalStructure,owl:Thing,http://dbpedia.org/ontology/constructionMaterial,606
+currentlyUsedFor,currently used for,ArchitecturalStructure,xsd:string,http://dbpedia.org/ontology/currentlyUsedFor,147
+demolitionDate,demolition date,ArchitecturalStructure,xsd:date,http://dbpedia.org/ontology/demolitionDate,133
+demolitionYear,demolition year,ArchitecturalStructure,xsd:gYear,http://dbpedia.org/ontology/demolitionYear,77
+elevatorCount,elevator count,Building,xsd:nonNegativeInteger,,
+features,features,ArchitecturalStructure,Work,,
+floorArea,floor area,Building,Area,http://dbpedia.org/ontology/floorArea,3985
+floorCount,floor count,Building,xsd:positiveInteger,http://dbpedia.org/ontology/floorCount,6375
+initiallyUsedFor,initally used for,ArchitecturalStructure,xsd:string,,
+maintainedBy,maintained by,ArchitecturalStructure,owl:Thing,http://dbpedia.org/ontology/maintainedBy,1664
+numberOfRooms,number of rooms,Building,xsd:nonNegativeInteger,http://dbpedia.org/ontology/numberOfRooms,1010
+rebuildingDate,rebuilding date,ArchitecturalStructure,xsd:date,http://dbpedia.org/ontology/rebuildingDate,423
+rebuildingYear,rebuilding year,ArchitecturalStructure,xsd:gYear,http://dbpedia.org/ontology/rebuildingYear,2330
+reopeningDate,reopening date,ArchitecturalStructure,xsd:date,http://dbpedia.org/ontology/reopeningDate,23
+reopeningYear,reopening year,ArchitecturalStructure,xsd:gYear,http://dbpedia.org/ontology/reopeningYear,129
+seatingCapacity,seating capacity,Building,xsd:nonNegativeInteger,http://dbpedia.org/ontology/seatingCapacity,3046
+security,security,Building,xsd:string,,
+space,space,Building,xsd:nonNegativeInteger,,
+structuralSystem,structural system,Building,owl:Thing,http://dbpedia.org/ontology/structuralSystem,217
+tenant,tenant,ArchitecturalStructure,Organisation,http://dbpedia.org/ontology/tenant,11149
+towerHeight,tower height,Building,xsd:positiveInteger,,
+visitorStatisticsAsOf,visitor statistics as of,ArchitecturalStructure,xsd:gYear,http://dbpedia.org/ontology/visitorStatisticsAsOf,3771
+visitorsPerDay,visitors per day,ArchitecturalStructure,xsd:nonNegativeInteger,,
+visitorsPerYear,visitors per year,ArchitecturalStructure,xsd:nonNegativeInteger,http://dbpedia.org/ontology/visitorsPerYear,132
+visitorsPercentageChange,visitor percentage change,ArchitecturalStructure,xsd:double,http://dbpedia.org/ontology/visitorsPercentageChange,1028
+visitorsTotal,visitors total,ArchitecturalStructure,xsd:nonNegativeInteger,,
+workArea,work area,Building,Area,,

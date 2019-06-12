@@ -1,0 +1,31 @@
+dbo:Building;;;what is the building end year of <X>;select ?x where { <X> <http://dbpedia.org/ontology/buildingEndYear> ?x };select ?a where { ?a <http://dbpedia.org/ontology/buildingEndYear> [] . ?a a <http://dbpedia.org/ontology/Place> }
+dbo:Building;;;what is the building start year of <X>;select ?x where { <X> <http://dbpedia.org/ontology/buildingStartYear> ?x };select ?a where { ?a <http://dbpedia.org/ontology/buildingStartYear> [] . ?a a <http://dbpedia.org/ontology/Place> }
+dbo:Building;;;what is the buildingtype of <X>;what is the buildingtype of <X>;what is the buildingtype of <X>
+dbo:Building;;;what is the construction of <X>;what is the construction of <X>;what is the construction of <X>
+dbo:Building;;;what is the construction material of <X>;select ?x where { <X> <http://dbpedia.org/ontology/constructionMaterial> ?x };select ?a where { ?a <http://dbpedia.org/ontology/constructionMaterial> [] . ?a a <http://dbpedia.org/ontology/Place> }
+dbo:Building;;;what is the currently used for of <X>;select ?x where { <X> <http://dbpedia.org/ontology/currentlyUsedFor> ?x };select ?a where { ?a <http://dbpedia.org/ontology/currentlyUsedFor> [] . ?a a <http://dbpedia.org/ontology/Place> }
+dbo:Building;;;what is the demolition date of <X>;select ?x where { <X> <http://dbpedia.org/ontology/demolitionDate> ?x };select ?a where { ?a <http://dbpedia.org/ontology/demolitionDate> [] . ?a a <http://dbpedia.org/ontology/Place> }
+dbo:Building;;;what is the demolition year of <X>;select ?x where { <X> <http://dbpedia.org/ontology/demolitionYear> ?x };select ?a where { ?a <http://dbpedia.org/ontology/demolitionYear> [] . ?a a <http://dbpedia.org/ontology/Place> }
+dbo:Building;;;what is the elevator count of <X>;what is the elevator count of <X>;what is the elevator count of <X>
+dbo:Building;;;what is the features of <X>;what is the features of <X>;what is the features of <X>
+dbo:Building;;;what is the floor area of <X>;select ?x where { <X> <http://dbpedia.org/ontology/floorArea> ?x };select ?a where { ?a <http://dbpedia.org/ontology/floorArea> [] . ?a a <http://dbpedia.org/ontology/Place> }
+dbo:Building;;;what is the floor count of <X>;select ?x where { <X> <http://dbpedia.org/ontology/floorCount> ?x };select ?a where { ?a <http://dbpedia.org/ontology/floorCount> [] . ?a a <http://dbpedia.org/ontology/Place> }
+dbo:Building;;;what is the initally used for of <X>;what is the initally used for of <X>;what is the initally used for of <X>
+dbo:Building;;;what is the maintained by of <X>;select ?x where { <X> <http://dbpedia.org/ontology/maintainedBy> ?x };select ?a where { ?a <http://dbpedia.org/ontology/maintainedBy> [] . ?a a <http://dbpedia.org/ontology/Place> }
+dbo:Building;;;what is the number of rooms of <X>;select ?x where { <X> <http://dbpedia.org/ontology/numberOfRooms> ?x };select ?a where { ?a <http://dbpedia.org/ontology/numberOfRooms> [] . ?a a <http://dbpedia.org/ontology/Place> }
+dbo:Building;;;what is the rebuilding date of <X>;select ?x where { <X> <http://dbpedia.org/ontology/rebuildingDate> ?x };select ?a where { ?a <http://dbpedia.org/ontology/rebuildingDate> [] . ?a a <http://dbpedia.org/ontology/Place> }
+dbo:Building;;;what is the rebuilding year of <X>;select ?x where { <X> <http://dbpedia.org/ontology/rebuildingYear> ?x };select ?a where { ?a <http://dbpedia.org/ontology/rebuildingYear> [] . ?a a <http://dbpedia.org/ontology/Place> }
+dbo:Building;;;what is the reopening date of <X>;select ?x where { <X> <http://dbpedia.org/ontology/reopeningDate> ?x };select ?a where { ?a <http://dbpedia.org/ontology/reopeningDate> [] . ?a a <http://dbpedia.org/ontology/Place> }
+dbo:Building;;;what is the reopening year of <X>;select ?x where { <X> <http://dbpedia.org/ontology/reopeningYear> ?x };select ?a where { ?a <http://dbpedia.org/ontology/reopeningYear> [] . ?a a <http://dbpedia.org/ontology/Place> }
+dbo:Building;;;what is the seating capacity of <X>;select ?x where { <X> <http://dbpedia.org/ontology/seatingCapacity> ?x };select ?a where { ?a <http://dbpedia.org/ontology/seatingCapacity> [] . ?a a <http://dbpedia.org/ontology/Place> }
+dbo:Building;;;what is the security of <X>;what is the security of <X>;what is the security of <X>
+dbo:Building;;;what is the space of <X>;what is the space of <X>;what is the space of <X>
+dbo:Building;;;what is the structural system of <X>;select ?x where { <X> <http://dbpedia.org/ontology/structuralSystem> ?x };select ?a where { ?a <http://dbpedia.org/ontology/structuralSystem> [] . ?a a <http://dbpedia.org/ontology/Place> }
+dbo:Building;;;what is the tenant of <X>;select ?x where { <X> <http://dbpedia.org/ontology/tenant> ?x };select ?a where { ?a <http://dbpedia.org/ontology/tenant> [] . ?a a <http://dbpedia.org/ontology/Place> }
+dbo:Building;;;what is the tower height of <X>;what is the tower height of <X>;what is the tower height of <X>
+dbo:Building;;;what is the visitor statistics as of of <X>;select ?x where { <X> <http://dbpedia.org/ontology/visitorStatisticsAsOf> ?x };select ?a where { ?a <http://dbpedia.org/ontology/visitorStatisticsAsOf> [] . ?a a <http://dbpedia.org/ontology/Place> }
+dbo:Building;;;what is the visitors per day of <X>;what is the visitors per day of <X>;what is the visitors per day of <X>
+dbo:Building;;;what is the visitors per year of <X>;select ?x where { <X> <http://dbpedia.org/ontology/visitorsPerYear> ?x };select ?a where { ?a <http://dbpedia.org/ontology/visitorsPerYear> [] . ?a a <http://dbpedia.org/ontology/Place> }
+dbo:Building;;;what is the visitor percentage change of <X>;select ?x where { <X> <http://dbpedia.org/ontology/visitorsPercentageChange> ?x };select ?a where { ?a <http://dbpedia.org/ontology/visitorsPercentageChange> [] . ?a a <http://dbpedia.org/ontology/Place> }
+dbo:Building;;;what is the visitors total of <X>;what is the visitors total of <X>;what is the visitors total of <X>
+dbo:Building;;;what is the work area of <X>;what is the work area of <X>;what is the work area of <X>
