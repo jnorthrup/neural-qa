@@ -99,15 +99,15 @@ if __name__ == "__main__":
 	requiredNamed.add_argument('--input_file', dest='inp', metavar='inp',
 								help='eg: File which contains metadata of properties', required=False)
 	requiredNamed.add_argument(
-		'--namespace', dest='ns', metavar='ns', help='eg: "ontology"', required=True)
+		'--namespace', dest='ns', metavar='ns', help='eg: "ontology"', required=False)
 	requiredNamed.add_argument('--output_file', dest='out', metavar='out',
-								help='File in which you want to store output', required=True)
+								help='File in which you want to store output', required=False)
 	requiredNamed.add_argument('--project_name', dest='project_name',
-								metavar='project_name', help='test', required=True)
+								metavar='project_name', help='test', required=False)
 	requiredNamed.add_argument('--url', dest='url', metavar='url',
-								help='Webpage URL: eg-http://mappings.dbpedia.org/server/ontology/classes/Place', required=True)
+								help='Webpage URL: eg-http://mappings.dbpedia.org/server/ontology/classes/Place', required=False)
 	requiredNamed.add_argument('--uri_file', dest='uri', metavar='uri',
-								help='eg: File which contains uri and number of occurrences of properties', required=True)
+								help='eg: File which contains uri and number of occurrences of properties', required=False)
 	requiredNamed.add_argument('--rs', dest='rs', metavar='rs',
 								help='Toggle to run separately', required=True)
 
