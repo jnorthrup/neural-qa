@@ -1,4 +1,4 @@
-# Automatic Training Data Generation For Neural QA Model 
+# Automatic Training Data Generation For Neural QA Model
 
 The final output file has each row of the form:
 
@@ -13,14 +13,18 @@ The final output file has each row of the form:
 Command:
 
 ```bash
-python get_properties.py --url <WEBPAGE URL> > temp.csv
+python get_properties.py --url <WEBPAGE URL> --output_file <OUTPUT FILE NAME > --project_name <PROJECT NAME>
 ```
 
-- --url argument is the webpage from where property metadata is to scraped example: http://mappings.dbpedia.org/server/ontology/classes/Place
+- `--url <WEBPAGE URL>`: --url argument is the webpage from where property metadata is to scraped example: http://mappings.dbpedia.org/server/ontology/classes/Place
+
+- `--output_file <OUTPUT FILE NAME >`:  --output_file argument is the file where the output data of this function will be stored in CSV format.
+
+- `--project_name <PROJECT NAME>`:  --project_name argument is the name given to the test case, a seperate folder with ths name will be ceated where the data files related to this project will be stored.
 
 ### STEP 2 - Get number of occurrences and URI
 
-Store only the rows of required namespace properties 
+Store only the rows of required namespace properties
 
 ### STEP 3 - Integrate STEP 2 values with their corresponding property metadata row in temp.csv
 
@@ -43,7 +47,7 @@ python decision_tree.py data/manual-annotation-updated-v2.csv
 
 - Output file: GS_with_mve.csv
 
-### STEP 5 - SPARQL Query Template and Generator Query generation 
+### STEP 5 - SPARQL Query Template and Generator Query generation
 
 Command:
 
