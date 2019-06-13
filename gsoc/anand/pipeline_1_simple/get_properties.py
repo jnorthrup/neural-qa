@@ -1,44 +1,65 @@
-import urllib2, urllib, httplib, json, sys, csv, io
+import urllib
+import json
+import sys
+import csv
+import io
 import argparse
+import os
 from bs4 import BeautifulSoup
+from tqdm import tqdm
+
+def get_properties(url,  project_name="test_project", output_file = "get_properties.csv"):
+    """
+    This function extracts the information regarding : [Name, Label, Domain, Range] from a page like this :
+    http://mappings.dbpedia.org/server/ontology/classes/Place and saves it in a file in CSV format.
+    """
+    page = urllib.request.urlopen(url)
+    soup = BeautifulSoup(page, "html.parser")
+    if(not os.path.isdir(project_name)):
+        os.makedirs(project_name)
+    output_file = open(project_name+"/" + output_file, 'w')
+    fl = 0
+    accum = []
+    for rows in tqdm(soup.find_all("tr")):
+        x = rows.find_all("td")
+        if len(x) <= 2:
+            fl = 1
+            continue
+        if fl == 1:
+            fl = 2
+            continue
+        name = rows.find_all("td")[0].get_text().replace(" (edit)", "")
+        label = rows.find_all("td")[1].get_text()
+        dom = rows.find_all("td")[2].get_text()
+        rng = rows.find_all("td")[3].get_text()
+
+        final = name + "," + label + "," + dom + "," + rng
+        accum.append(final)
+        output_file.write(final+"\n")
+    output_file.close()
+    return accum
+
 
 """
-Section to parse the command line arguments.
+Name, Label, Domain, Range
 """
 
-parser = argparse.ArgumentParser()
-requiredNamed = parser.add_argument_group('Required Arguments');
-requiredNamed.add_argument('--url', dest='url', metavar='url', help='Webpage URL: eg-http://mappings.dbpedia.org/server/ontology/classes/Place', required=True)
+if __name__ == "__main__":
+    """
+    Section to parse the command line arguments.
+    """
+    parser = argparse.ArgumentParser()
+    requiredNamed = parser.add_argument_group('Required Arguments')
 
-args = parser.parse_args()
-quote_page = args.url
-page = urllib2.urlopen(quote_page)
-soup = BeautifulSoup(page, "html.parser")
-
-# print type(soup)
-
-
-fl = 0
-for rows in soup.find_all("tr"):
-	x = rows.find_all("td")
-	if len(x) <= 2:
-		fl = 1
-		continue	
-	if fl == 1:
-		fl = 2
-		continue
-
-	name = rows.find_all("td")[0].get_text().replace(" (edit)","")
-	label = rows.find_all("td")[1].get_text()
-	dom = rows.find_all("td")[2].get_text()
-	rng = rows.find_all("td")[3].get_text()
-
-	final = name + "," + label + ","  + dom + ","  + rng 
-	print final.encode('utf-8')
-"""
-Name, Label,Domain ,Range
-"""
-# 	with io.open("test.csv", mode='w', encoding='utf-8') as toWrite:
-# 	writer = csv.writer(toWrite)
-# 	writer.writerows(props)
-
+    requiredNamed.add_argument('--url', dest='url', metavar='url',
+                                                            help='Webpage URL: eg-http://mappings.dbpedia.org/server/ontology/classes/Place', required=True)
+    requiredNamed.add_argument(
+        '--output_file', dest='out_put', metavar='out_put', help='temp.csv', required=True)
+    requiredNamed.add_argument(
+        '--project_name', dest='project_name', metavar='project_name', help='test', required=True)
+    args = parser.parse_args()
+    url = args.url
+    output_file = args.out_put
+    project_name = args.project_name
+    get_properties(url = url, project_name= project_name,  output_file = output_file)
+    pass

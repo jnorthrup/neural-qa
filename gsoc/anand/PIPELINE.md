@@ -8,13 +8,13 @@ Follow the below given steps
 
 Here is the skeleton of the command:
 
-```bash 
+``` bash
 python final_formatting.py --rs <0 IF TO RUN THE WHOLE CODE | 1 TO RUN THE FUNTION OF THIS PYHTON SOURCE ONLY> --uri_file <URI FREQUENCY FILE TSV> --url <WEBPAGE URL> --output_file <OUTPUT FILE NAME > --project_name <PROJECT NAME> --namespace <NAMESPACE>
 ```
 
 Example:
 
-```bash 
+```bash
 python final_formatting.py --rs 0 --uri_file ../dbpedia-201610-properties.tsv --url http://mappings.dbpedia.org/server/ontology/classes/Place --output_file test_res.csv --project_name test --namespace ontology
 
 ```
@@ -103,27 +103,65 @@ Steps from the previous folder.
 
 ## COMPOSITIONALITY EXPERIMENT
 
+### One - liner
+
+Here is the skeleton of the command:
+
+``` bash
+python composite_template.py --rs <0 IF TO RUN THE WHOLE CODE | 1 TO RUN THE FUNTION OF THIS PYHTON SOURCE ONLY> --uri_file <URI FREQUENCY FILE TSV> --url <WEBPAGE URL> --output_file <OUTPUT FILE NAME > --project_name <PROJECT NAME> --namespace <NAMESPACE>
+```
+
+Example:
+
+```bash
+python composite_template.py --rs 0 --uri_file ../dbpedia-201610-properties.tsv --url http://mappings.dbpedia.org/server/ontology/classes/Place --output_file test_res.csv --project_name test --namespace ontology
+
+```
+
+
 ### STEP 1 - Create template annotations (all a[i]'s)
 
 Command:
 
 ```bash
-python range_place.py data/GS-v3.csv > data/annotations_compositions_combined.csv
+python range_place.py -input_file <OUTPUT FROM PREVIOUS STEP> --output_file <OUTPUT FILE> --project_name <PROJECT NAME>
 ```
+
+- `--input_file <OUTPUT FROM PREVIOUS STEP>`: Output file from previous step  
+- `--output_file <OUTPUT FILE>` Output file name
+- `--project_name <PROJECT NAME>` Project Name
 
 ### STEP 2 - Create composite templates (a[i]○b true for all i <= sizeof list 'a')
 
 Command:
 
+Only run processes in this file and not the whole code:
+
 ```bash
-python composite_template.py data/GS-v3.csv >> data/annotations_compositions_combined.csv
+python composite_template.py --input_file <OUTPUT FROM PREVIOUS STEP> --rs <0 IF TO RUN THE WHOLE CODE | 1 TO RUN THE FUNTION OF THIS PYHTON SOURCE ONLY> --project_name <PROJECT NAME> --output_file <OUTPUT FILE>
 ```
+
+Run the whole flow
+
+```bash
+python composite_template.py --rs <0 IF TO RUN THE WHOLE CODE | 1 TO RUN THE FUNTION OF THIS PYHTON SOURCE ONLY> --uri_file <URI FREQUENCY FILE TSV> --url <WEBPAGE URL> --output_file <OUTPUT FILE NAME > --project_name <PROJECT NAME> --namespace <NAMESPACE>
+```
+
+- `--input_file <OUTPUT FROM PREVIOUS STEP>`: Output file from previous step  
+- `--output_file <OUTPUT FILE>`: Output file name
+- `--project_name <PROJECT NAME>`: Project Name
+- `--uri_file <URI FREQUENCY FILE TSV>`: Files with frequency information
+- `--namespace <NAMESPACE>`: Change the namespace to the required (it is 'ontology' right now)
+- `--project_name <PROJECT NAME>`: Project Name
+- `--rs <VALUE>`: 0 If To Run the whole code (whole flow) | 1 to run the function of this python source only
 
 ### STEP 3 - Follow the original data generation and training steps (readme of master branch)
 
 Steps from the previous folder.
 
-### STEP 4 - Choose any 10% templates and their output and shift it to new file (test data), rest of the contents of this file should be split into 90% train and 10% dev using the split_in_train_dev_test.py script.
+### STEP 4 - Training
+
+Choose any 10% templates and their output and shift it to new file (test data), rest of the contents of this file should be split into 90% train and 10% dev using the split_in_train_dev_test.py script
 
 ### STEP 5 - Run the training
 
