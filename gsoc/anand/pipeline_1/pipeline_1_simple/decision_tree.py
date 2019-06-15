@@ -47,7 +47,8 @@ def decision_tree(input_file, project_name, output_file="decision_tree.csv", url
             lineno += 1
             continue
         line = line.strip().split(',')
-        rng = line[2].lower()
+        # Wrong index for range is corrected here
+        rng = line[3].lower()
         lbl = line[1]
         if 'person' in rng:
             rng = "who"

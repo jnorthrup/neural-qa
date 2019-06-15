@@ -69,6 +69,7 @@ def composite_template(input_file, uri_file, url, output_file, project_name, nam
 			newl.append((gq))
 			newl = ";".join(newl)
 			accum.append(newl)
+	output_file_write.write("\n")
 	output_file_write.write("\n".join(accum))
 	output_file_write.close()
 
