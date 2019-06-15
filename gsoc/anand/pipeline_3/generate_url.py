@@ -3,82 +3,63 @@ import pprint
 import json
 import sys
 import urllib
+import argparse
 from bs4 import BeautifulSoup
 
+
 def get_url(url):
+        """Fuction to extract the http://mappings.dbpedia.org/server/ontology/classes/<some entity> 
+        page link for the given http://mappings.dbpedia.org/index.php/OntologyClass:<some entity>"""
         page = urllib.request.urlopen(url)
         soup = BeautifulSoup(page, "html.parser")
-        link = soup.findAll('a',attrs={"rel" : "nofollow"})[0]['href']
+        link = soup.findAll('a', attrs={"rel": "nofollow"})[0]['href']
         return link
 
+
 def generate_url(given_label):
+        """
+        - This function generates a proper url to extract information about class, properties and
+        data types from the DBpedia database. (Like:​ http://mappings.dbpedia.org/server/ontology/classes/Place​ )
+        - It returns a url string to the calling function.
+        """
         xmldoc = open('../utility/dbpedia.owl').read()
         jsondoc = ((xmltodict.parse(xmldoc)))
         count = 0
         for onto in jsondoc['rdf:RDF'].keys():
-                if(not ( onto == 'owl:Class')):
+                if(not (onto == 'owl:Class')):
                         continue
-                
                 for val in ((jsondoc['rdf:RDF'][onto])):
-                        count+=1
+                        count += 1
                         #print("URI: "+val['@rdf:about'])
                         label = ""
                         for lang in (val['rdfs:label']):
-                                if(lang['@xml:lang']=='en'):
-                                        #print("Label: "+lang['#text'])
+                                if(lang['@xml:lang'] == 'en'):
+                                        # print("Label: "+lang['#text'])
                                         label = lang['#text']
-                        if(type(val['rdfs:subClassOf'])==list):
-                                for subcl in  val['rdfs:subClassOf']:
-                                        #print("Sub-class of: "+subcl['@rdf:resource']) 
-                                        pass           
+                        if(type(val['rdfs:subClassOf']) == list):
+                                for subcl in val['rdfs:subClassOf']:
+                                        #print("Sub-class of: "+subcl['@rdf:resource'])
+                                        pass
                         elif(type(val['rdfs:subClassOf']) != "list"):
-                                #print("Sub-class of: "+val['rdfs:subClassOf']['@rdf:resource'])
-                                pass
+                                        #print("Sub-class of: "+val['rdfs:subClassOf']['@rdf:resource'])
+                                        pass
                         url = val['prov:wasDerivedFrom']['@rdf:resource']
-                        #print("URL:" + url) 
+                        #print("URL:" + url)
                         if(label == given_label):
                                 return get_url(url)
 
+
 if __name__ == "__main__":
-        print(generate_url(sys.argv[1]))
+        """
+        Use the format 'python.py generate_url --label <Label: can be person, place etc.>`
+        Section to parse the command line arguments.
+        """
+        parser = argparse.ArgumentParser()
+        requiredNamed = parser.add_argument_group('Required Arguments')
+
+        requiredNamed.add_argument('--label', dest='label', metavar='label',
+                                                                help='label: person, place etc.', required=True)
+        args = parser.parse_args()
+        label = args.label
+        print(generate_url(label))
         pass
-
-
-
-
-
-
-
-
-
-
-"""
- if(( onto == ("owl:ObjectProperty") ) ):
-                print(onto)
-                for val in ((jsondoc['rdf:RDF'][onto])):
-                        count+=1
-                        try:
-                                print("URI: "+val['@rdf:about'])
-                                print("Type: "+ val['rdf:type']["@rdf:resource"] )
-                                if(type(val['rdfs:label'])=="<class 'list'>"):
-                                        for lang in (val['rdfs:label']):
-                                                if(lang['@xml:lang']=='en'):
-                                                        print("Label: "+lang['#text'])
-                                                        pass
-                                elif(type(val['rdfs:label'])=="<class 'collections.OrderedDict'>"):
-                                lang = dict(val['rdfs:label'])
-                                if(lang['@xml:lang']=='en'):
-                                                        print("Label: "+lang['#text'])
-                                                        pass   
-                                print("Domain: "+ val['rdfs:domain']["@rdf:resource"] )
-                                print("Range: "+ val['rdfs:range']["@rdf:resource"] )
-                                print("Sub-property of : "+val['rdfs:subPropertyOf']['@rdf:resource'])
-                                url = val['prov:wasDerivedFrom']['@rdf:resource']
-                                print(url)
-                                #page = urllib.request.urlopen(url)
-                                #soup = BeautifulSoup(page, "html.parser")
-                                #link = soup.findAll('a',attrs={"rel" : "nofollow"})[0]['href']
-                                #print("Address of resource: "+link)
-                        except:
-                                
-"""

@@ -10,8 +10,12 @@ from tqdm import tqdm
 
 def get_properties(url,  project_name="test_project", output_file = "get_properties.csv"):
     """
-    This function extracts the information regarding : [Name, Label, Domain, Range] from a page like this :
+    - This function extracts the information regarding : [Name, Label, Domain, Range] from a page like this :
     http://mappings.dbpedia.org/server/ontology/classes/Place and saves it in a file in CSV format.
+    - This code on execution creates a csv which contains all the properties, ontology,
+    class related information and data types as field values in each row.
+    - This function also returns a 2D list of the information mentioned above to the calling
+    function
     """
     page = urllib.request.urlopen(url)
     soup = BeautifulSoup(page, "html.parser")
