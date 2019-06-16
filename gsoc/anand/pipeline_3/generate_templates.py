@@ -11,7 +11,6 @@ def generate_templates(label,project_name):
     count =0
     list_of_property_information = get_properties(url=url,project_name=project_name,output_file = "get_properties.csv")
     for property_line in list_of_property_information:
-        property_line= list_of_property_information[12]
         count+=1
         prop = property_line.split(',')
         prop_name = prop[1]
@@ -20,8 +19,7 @@ def generate_templates(label,project_name):
         prop_name = prop[0]
         print("**************\n"+str(prop))
         sentence_and_template_generator(project_name=project_name ,prop=prop, suffix = " of <X> ?",count = 2)
-        if(count==1):
-            exit()
+        
         
 
 
