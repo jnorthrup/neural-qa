@@ -4,6 +4,7 @@ from get_properties import get_properties
 import urllib
 import urllib.parse
 from bs4 import BeautifulSoup
+import os
 
 def check_query(query):
     query_original = query
@@ -19,22 +20,32 @@ def check_query(query):
         print(query_original)
         return True
 
-def sentence_and_template_generator(prop,project_name,count=0, suffix = " of <X> ?", query_suffix = "", list_prop = [] ):
+def sentence_and_template_generator(mother_ontology,vessel,prop,project_name,output_file,count=0, suffix = " of <A> ?", query_suffix = ""):
     if(type(prop)==str):
         prop = prop.split(',')
-    question_starts_with =" "
+
+    natural_language_question = []
+    sparql_query = []
+
+    question_form = open("../utility/question_form.csv",'r').readlines()
+    question_starts_with =question_form[0].split(',')
+    query_starts_with = question_form[1].split(',')
+    query_ends_with = question_form[2].split(',')
+    question_number=[2]
     if(prop[3]=="owl:Thing" or prop[3]=="xsd:string"):
-        question_starts_with = "What is the "
-    if(prop[3]=="Place"):
-       question_starts_with = "Where is the "
-    if(prop[3]=="Person"):
-       question_starts_with = "Who is the "
-    if(prop[3]=="xsd:date" or "date" in prop[3] or "year" in prop[3] or "date" in prop[3] ):
-       question_starts_with = "When is the "      
+        question_number=[2,4]
+    elif(prop[3]=="Place"):
+       question_number=[3,4]
+    elif(prop[3]=="Person"):
+       question_number=[1,4]
+    elif(prop[3]=="xsd:date" or "date" in prop[3] or "year" in prop[3] or "date" in prop[3] or "time" in prop[3] ):
+       question_number=[0,4,5]    
+    elif(prop[3]=="xsd:nonNegativeInteger" or "negative" in prop[3].lower() ):
+       question_number=[2,6]
+    elif(prop[3]=="xsd:integer" or "integer" in prop[3].lower() ):
+       question_number=[2,6]    
     else:
-       question_starts_with = "What is the " 
-    natural_language_question = (question_starts_with+prop[1]+ suffix)
-    
+        question_number=[2]  
 
     val = (generate_url_spec(prop[1]))
     prop_link = val[0]
@@ -42,17 +53,21 @@ def sentence_and_template_generator(prop,project_name,count=0, suffix = " of <X>
         return
     derived = val[1]
     prop_link = "dbo:"+prop_link.strip().split('http://dbpedia.org/ontology/')[-1]
-    list_prop.append(prop_link)
-    sparql_query = ("select ?x where { <X>  "+ query_suffix + prop_link  +" ?x } ")
-    if(query_suffix==""):
-        query_answer = ("select distinct(?y) where { ?y "+prop_link+" []  } ")
-    else :
-        query_answer = ("select distinct(?y) where { ?y "+query_suffix.split(" ")[0]+" [] . ?y  "+query_suffix +" "+ prop_link +" ?x } ")
+
+    for number in question_number:
+        natural_language_question.append(question_starts_with[number]+prop[1]+ suffix)
+        sparql_query.append(query_starts_with[number]+"where { <A>  "+ query_suffix + prop_link  +" ?x "+ query_ends_with[number])
+
 
     if(query_suffix==""):
-        flag = (check_query(query_answer.replace("select distinct(?y)","ask")))
+        query_answer = ("select distinct(?a) where { ?a "+prop_link+" []  } ")
     else :
-        flag = (check_query(query_answer.replace("select distinct(?y)","ask")))
+        query_answer = ("select distinct(?a) where { ?a "+query_suffix.split(" ")[0]+" [] . ?a  "+query_suffix +" "+ prop_link +" ?x } ")
+
+    if(query_suffix==""):
+        flag = (check_query(query_answer.replace("select distinct(?a)","ask")))
+    else :
+        flag = (check_query(query_answer.replace("select distinct(?a)","ask")))
     if(not flag):
         return
 
@@ -62,9 +77,14 @@ def sentence_and_template_generator(prop,project_name,count=0, suffix = " of <X>
     else:
         variable = "?x"+ str(count) 
     query_suffix = prop_link + " "+variable+" . "+variable+" " 
-    print(natural_language_question+"\n"+sparql_query+"\n"+query_answer+"\n*************")
+
+    for number in range(len(natural_language_question)):
+        vessel.append([mother_ontology,"","",natural_language_question[number],sparql_query[number],query_answer])
+        output_file.write(';'.join(vessel[-1])+"\n")
+        print(';'.join(vessel[-1])+"\n")
+    print(str(natural_language_question)+"\n"+str(sparql_query)+"\n"+query_answer+"\n*************")
     
-    suffix = " of "+ prop[1] +" of <X> ?"
+    suffix = " of "+ prop[1] +" of <A> ?"
     
     if(count>0):
         print(prop[3].split(":")[-1])
@@ -75,8 +95,7 @@ def sentence_and_template_generator(prop,project_name,count=0, suffix = " of <X>
         list_of_property_information = get_properties(url=url,project_name=project_name,output_file =prop[1]+".csv" )
         for property_line in list_of_property_information:
             prop_inside = property_line.split(',')
-            sentence_and_template_generator(prop=prop_inside, suffix = suffix,count = count, project_name=project_name, query_suffix = query_suffix , list_prop=list_prop)
-            
+            sentence_and_template_generator(output_file=output_file, mother_ontology=mother_ontology,vessel=vessel,prop=prop_inside, suffix = suffix,count = count, project_name=project_name, query_suffix = query_suffix )       
                 
 
 
