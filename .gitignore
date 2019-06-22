@@ -105,4 +105,7 @@ ENV/
 
 .idea/
 
+gsoc/anand/utility/test.py
+gsoc/anand/utility/part-r-00000
+
 data/*/*
