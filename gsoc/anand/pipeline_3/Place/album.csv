@@ -1,0 +1,13 @@
+albumRuntime,album duration,Album,Time
+artist,performer,MusicalWork,Agent
+compiler,compiler,Album,Person
+longtype,longtype,Album,xsd:string
+lyrics,lyrics,MusicalWork,Person
+musicFormat,musicFormat,Album,xsd:string
+musicType,musicType,MusicalWork,owl:Thing
+musicalKey,musical key,MusicalWork,xsd:string
+recordDate,record date,MusicalWork,xsd:date
+recordedIn,recorded in,MusicalWork,PopulatedPlace
+review,review,Album,xsd:anyURI
+totalDiscs,total discs,Album,xsd:integer
+totalTracks,total tracks,Album,xsd:integer

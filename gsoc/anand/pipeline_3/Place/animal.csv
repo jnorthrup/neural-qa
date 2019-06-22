@@ -1,0 +1,6 @@
+breeder,breeder,Animal,Person
+dam,dam,Animal,Animal
+damsire,damsire,Animal,Animal
+foalDate,foal date,Animal,xsd:date
+grandsire,grandsire,Animal,Animal
+sire,sire,Animal,Animal

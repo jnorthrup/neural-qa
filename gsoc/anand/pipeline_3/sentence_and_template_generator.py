@@ -5,6 +5,43 @@ import urllib
 import urllib.parse
 from bs4 import BeautifulSoup
 import os
+from tqdm import tqdm
+
+def rank_check(query,diction,count,orignal_count):
+    query_original = query
+    count = orignal_count-count
+    ques = " "
+    for value in range(count):
+        if(value == 0):
+             ques = ques+"?x "
+        else:
+            ques = ques+"?x"+str(value+1)+" "
+    query = query.replace("(?a)","(?a)"+ ques) + " order by RAND() limit 100"
+    #print(query)
+    query = urllib.parse.quote(query)
+    url = "https://dbpedia.org/sparql?default-graph-uri=http%3A%2F%2Fdbpedia.org&query="+query+"&format=text%2Fhtml&CXML_redir_for_subjs=121&CXML_redir_for_hrefs=&timeout=30000&debug=on&run=+Run+Query+"
+    #print(url)
+    page = urllib.request.urlopen(url)
+    soup = BeautifulSoup(page, "html.parser")
+    total = len(soup.find_all("tr"))
+    accum = 0
+    for rows in tqdm(soup.find_all("tr")):
+        for td in rows.find_all("a"):
+            damp=0.85
+            denom = 0 
+            interaccum = 0
+            for a in td:
+                if(a in diction.keys()):
+                    denom+=1
+                    damp*=damp
+                    interaccum+=damp*float(diction[a])
+                """ print (a.get_text())
+                if(a.get_text() in diction.keys()):
+                    print(diction(a.get_text())) """
+            if(denom):
+                interaccum = interaccum/denom
+            accum+=interaccum
+    return float(accum/total)
 
 def check_query(query):
     query_original = query
@@ -13,20 +50,19 @@ def check_query(query):
     #print(url)
     page = urllib.request.urlopen(url)
     soup = BeautifulSoup(page, "html.parser")
-    print((soup.text))
+    #print((soup.text))
     if(soup.text=="false"):
         return False
     else:
-        print(query_original)
+        #print(query_original)
         return True
 
-def sentence_and_template_generator(mother_ontology,vessel,prop,project_name,output_file,count=0, suffix = " of <A> ?", query_suffix = ""):
+def sentence_and_template_generator(mother_ontology,vessel,prop,project_name,output_file,diction,orignal_count=0,count=0, suffix = " of <A> ?", query_suffix = ""):
     if(type(prop)==str):
         prop = prop.split(',')
-
+    orignal_count = count
     natural_language_question = []
     sparql_query = []
-
     question_form = open("../utility/question_form.csv",'r').readlines()
     question_starts_with =question_form[0].split(',')
     query_starts_with = question_form[1].split(',')
@@ -70,6 +106,8 @@ def sentence_and_template_generator(mother_ontology,vessel,prop,project_name,out
         flag = (check_query(query_answer.replace("select distinct(?a)","ask")))
     if(not flag):
         return
+    
+    rank = rank_check(diction=diction,count=count, query=query_answer,orignal_count=orignal_count)
 
     count = count - 1
     if(count == 0):
@@ -80,9 +118,9 @@ def sentence_and_template_generator(mother_ontology,vessel,prop,project_name,out
 
     for number in range(len(natural_language_question)):
         vessel.append([mother_ontology,"","",natural_language_question[number],sparql_query[number],query_answer])
-        output_file.write(';'.join(vessel[-1])+"\n")
-        print(';'.join(vessel[-1])+"\n")
-    print(str(natural_language_question)+"\n"+str(sparql_query)+"\n"+query_answer+"\n*************")
+        output_file.write(';'.join(vessel[-1])+";"+str(rank)+"\n")
+        print(';'.join(vessel[-1])+str(rank)+"\n")
+    #print(str(natural_language_question)+"\n"+str(sparql_query)+"\n"+query_answer+"\n*************")
     
     suffix = " of "+ prop[1] +" of <A> ?"
     
@@ -95,7 +133,7 @@ def sentence_and_template_generator(mother_ontology,vessel,prop,project_name,out
         list_of_property_information = get_properties(url=url,project_name=project_name,output_file =prop[1]+".csv" )
         for property_line in list_of_property_information:
             prop_inside = property_line.split(',')
-            sentence_and_template_generator(output_file=output_file, mother_ontology=mother_ontology,vessel=vessel,prop=prop_inside, suffix = suffix,count = count, project_name=project_name, query_suffix = query_suffix )       
+            sentence_and_template_generator(orignal_count=orignal_count,diction=diction,output_file=output_file, mother_ontology=mother_ontology,vessel=vessel,prop=prop_inside, suffix = suffix,count = count, project_name=project_name, query_suffix = query_suffix )       
                 
 
 

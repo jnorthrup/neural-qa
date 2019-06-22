@@ -46,7 +46,7 @@ def generate_url(given_label):
                                         pass
                         url = val['prov:wasDerivedFrom']['@rdf:resource']
                         #print("URL:" + url)
-                        if(label == given_label):
+                        if(given_label == label):
                                 return [get_url(url),about]
         return ["None","None"]
 
@@ -74,6 +74,13 @@ def generate_url_spec(given_label):
                 if(not (onto == 'owl:DatatypeProperty' or onto == "owl:ObjectProperty")):
                         continue
                 for val in ((jsondoc['rdf:RDF'][onto])):
+                        wiki_number = "None"
+                        try:
+                                for value in val['owl:equivalentClass']['@rdf:resource']:
+                                        if "wikidata" in value:
+                                                wiki_number= value.strip().split("/")[-1] 
+                        except:
+                                pass
                         derived = ""
                         try:
                                 derived = val['prov:wasDerivedFrom']['@rdf:resource']
@@ -91,12 +98,12 @@ def generate_url_spec(given_label):
                                                 label = lang['#text']
                                                 pass
                                 if(label == given_label):
-                                        return [val['@rdf:about'],derived]
+                                        return [val['@rdf:about'],derived,wiki_number]
                         except:
                                 if(label == val['@rdf:about'].strip().split('/')[-1]):
-                                        return [val['@rdf:about'],derived]
+                                        return [val['@rdf:about'],derived,wiki_number]
                                 continue
-        return [None, None]
+        return ["None", "None", "None"]
 
 def generate_url_about(given_label):
         """

@@ -36,8 +36,9 @@ def get_properties(url,  project_name="test_project", output_file = "get_propert
         label = rows.find_all("td")[1].get_text()
         dom = rows.find_all("td")[2].get_text()
         rng = rows.find_all("td")[3].get_text()
-
-        final = name + "," + label + "," + dom + "," + rng
+        URL_name = ((rows.find_all("td")[0].find('a').attrs['href']))
+        final = name + "," + label + "," + dom + "," + rng 
+        #+ ","+ URL_name.split(':')[-1]
         accum.append(final)
         output_file.write(final+"\n")
     output_file.close()
@@ -45,7 +46,7 @@ def get_properties(url,  project_name="test_project", output_file = "get_propert
 
 
 """
-Name, Label, Domain, Range
+Name, Label, Domain, Range, URL_name
 """
 
 if __name__ == "__main__":
