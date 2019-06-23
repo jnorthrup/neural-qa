@@ -11,9 +11,7 @@ def generate_templates(label,project_name,depth=1,output_file="sentence_and_temp
     url = val[0]
     about = (val[1])
     count =0
-    vessel= []
-    
-       
+    vessel= []  
     
     diction = fetch_ranks("../utility/part-r-00000")
     if(not os.path.isdir(project_name)):
