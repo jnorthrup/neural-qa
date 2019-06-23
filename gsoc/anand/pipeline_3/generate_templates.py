@@ -4,6 +4,7 @@ from generate_url import generate_url
 from sentence_and_template_generator import sentence_and_template_generator
 import os
 from fetch_ranks_sub import fetch_ranks
+import logging
 
 def generate_templates(label,project_name,depth=1,output_file="sentence_and_template_generator"):
     val = generate_url(label)
@@ -11,17 +12,36 @@ def generate_templates(label,project_name,depth=1,output_file="sentence_and_temp
     about = (val[1])
     count =0
     vessel= []
+    
+       
+    
     diction = fetch_ranks("../utility/part-r-00000")
     if(not os.path.isdir(project_name)):
         os.makedirs(project_name)
     output_file = open(project_name+"/" + output_file, 'w')
+    
+    # Create a logger object
+    logger = logging.getLogger()
+
+    # Configure logger
+    logging.basicConfig(filename=project_name+"/logfile.log", format='%(filename)s: %(message)s', filemode='w')
+
+    # Setting threshold level
+    logger.setLevel(logging.DEBUG)
+
+    # Use the logging methods
+    logger.debug("This is a debug message")  
+    logger.info("For your info")  
+    logger.warning("This is a warning message")  
+    logger.error("This is an error message")  
+    logger.critical("This is a critical message")   
 
     list_of_property_information = get_properties(url=url,project_name=project_name,output_file = "get_properties.csv")
     for property_line in list_of_property_information:
         count+=1
         prop = property_line.split(',')
         print("**************\n"+str(prop))
-        sentence_and_template_generator(diction=diction,output_file=output_file,mother_ontology=about.strip().replace("http://dbpedia.org/ontology/","dbo:"),vessel=vessel,project_name=project_name ,prop=prop, suffix = " of <A> ?",count = 2)
+        sentence_and_template_generator(log=logger,diction=diction,output_file=output_file,mother_ontology=about.strip().replace("http://dbpedia.org/ontology/","dbo:"),vessel=vessel,project_name=project_name ,prop=prop, suffix = " of <A> ?",count = 2)
     output_file.close()    
 
 if __name__ == "__main__":

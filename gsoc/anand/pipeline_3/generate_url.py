@@ -46,7 +46,7 @@ def generate_url(given_label):
                                         pass
                         url = val['prov:wasDerivedFrom']['@rdf:resource']
                         #print("URL:" + url)
-                        if(given_label == label):
+                        if(given_label == val['@rdf:about'].split('http://dbpedia.org/ontology/')[-1]):
                                 return [get_url(url),about]
         return ["None","None"]
 
@@ -97,47 +97,10 @@ def generate_url_spec(given_label):
                                                 lang = dict(val['rdfs:label'])
                                                 label = lang['#text']
                                                 pass
-                                if(label == given_label):
+                                if(given_label == val['@rdf:about'].split('http://dbpedia.org/ontology/')[-1]):
                                         return [val['@rdf:about'],derived,wiki_number]
                         except:
-                                if(label == val['@rdf:about'].strip().split('/')[-1]):
+                                if(given_label == val['@rdf:about'].split('http://dbpedia.org/ontology/')[-1]):
                                         return [val['@rdf:about'],derived,wiki_number]
                                 continue
         return ["None", "None", "None"]
-
-def generate_url_about(given_label):
-        """
-        - This function generates a proper url to extract information about class, properties and
-        data types from the DBpedia database. (Like:​ http://mappings.dbpedia.org/server/ontology/classes/Place​ )
-        - It returns a url string to the calling function.
-        """
-        xmldoc = open('../utility/dbpedia.owl').read()
-        jsondoc = ((xmltodict.parse(xmldoc)))
-        for onto in jsondoc['rdf:RDF'].keys():
-                if(not (onto == 'owl:DatatypeProperty' or onto == "owl:ObjectProperty")):
-                        continue
-                for val in ((jsondoc['rdf:RDF'][onto])):
-                        derived = ""
-                        try:
-                                derived = val['prov:wasDerivedFrom']
-                        except:
-                                derived = "None"
-                        label = ""
-                        try:
-                                if(type(val['rdfs:label']) == list):
-                                        for lang in (val['rdfs:label']):
-                                                if(lang['@xml:lang'] == 'en'):
-                                                        # print("Label: "+lang['#text'])
-                                                        label = lang['#text']
-                                elif(type(val['rdfs:label']) != "list"):
-                                                lang = dict(val['rdfs:label'])
-                                                label = lang['#text']
-                                                pass
-                                if(label == given_label):
-                                        return [val['@rdf:about'],derived]
-                        except:
-                                if(label == val['@rdf:about'].strip().split('/')[-1]):
-                                        return [val['@rdf:about'],derived]
-                                continue
-                                
-
