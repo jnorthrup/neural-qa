@@ -28,11 +28,11 @@ def generate_templates(label,project_name,depth=1,output_file="sentence_and_temp
     logger.setLevel(logging.DEBUG)
 
     # Use the logging methods
-    logger.debug("This is a debug message")  
-    logger.info("For your info")  
-    logger.warning("This is a warning message")  
-    logger.error("This is an error message")  
-    logger.critical("This is a critical message")   
+    #logger.debug("This is a debug message")  
+    logger.info("This is a log file.")  
+    #logger.warning("This is a warning message")  
+    #logger.error("This is an error message")  
+    #logger.critical("This is a critical message")   
 
     list_of_property_information = get_properties(url=url,project_name=project_name,output_file = "get_properties.csv")
     for property_line in list_of_property_information:
