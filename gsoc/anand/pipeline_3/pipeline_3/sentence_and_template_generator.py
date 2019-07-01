@@ -7,9 +7,9 @@ from bs4 import BeautifulSoup
 import os
 from tqdm import tqdm
 
-def rank_check(query,diction,count,orignal_count):
+def rank_check(query,diction,count,original_count):
     query_original = query
-    count = orignal_count-count
+    count = original_count-count
     ques = " "
     for value in range(count):
         if(value == 0):
@@ -18,7 +18,7 @@ def rank_check(query,diction,count,orignal_count):
             ques = ques+"?x"+str(value+1)+" "
     query = query.replace("(?a)","(?a)"+ ques) + " order by RAND() limit 100"
     #print(query)
-    query = urllib.parse.quote(query)
+    query = urllib.parse.quote_plus(query)
     url = "https://dbpedia.org/sparql?default-graph-uri=http%3A%2F%2Fdbpedia.org&query="+query+"&format=text%2Fhtml&CXML_redir_for_subjs=121&CXML_redir_for_hrefs=&timeout=30000&debug=on&run=+Run+Query+"
     #print(url)
     page = urllib.request.urlopen(url)
@@ -55,14 +55,20 @@ def check_query(log,query):
         log.error(url)
         log.error(query_original )
         return False
-    else:
+    elif(soup.text=="false"):
         #print(query_original)
         return True
+    else:
+        log.error("Broken Link")
+        log.error(url)
+        log.error(query_original )
 
-def sentence_and_template_generator(log,mother_ontology,vessel,prop,project_name,output_file,diction,orignal_count=0,count=0, suffix = " of <A> ?", query_suffix = ""):
+
+
+def sentence_and_template_generator(log,mother_ontology,vessel,prop,project_name,output_file,diction,original_count=0,count=0, suffix = " of <A> ?", query_suffix = ""):
     if(type(prop)==str):
         prop = prop.split(',')
-    orignal_count = count
+    original_count = count
     natural_language_question = []
     sparql_query = []
     question_form = open("../utility/question_form.csv",'r').readlines()
@@ -109,7 +115,7 @@ def sentence_and_template_generator(log,mother_ontology,vessel,prop,project_name
     if(not flag):
         return
     
-    rank = rank_check(diction=diction,count=count, query=query_answer,orignal_count=orignal_count)
+    rank = rank_check(diction=diction,count=count, query=query_answer,original_count=original_count)
 
     count = count - 1
     if(count == 0):
@@ -135,7 +141,7 @@ def sentence_and_template_generator(log,mother_ontology,vessel,prop,project_name
         list_of_property_information = get_properties(url=url,project_name=project_name,output_file =prop[1]+".csv" )
         for property_line in tqdm(list_of_property_information):
             prop_inside = property_line.split(',')
-            sentence_and_template_generator(log=log,orignal_count=orignal_count,diction=diction,output_file=output_file, mother_ontology=mother_ontology,vessel=vessel,prop=prop_inside, suffix = suffix,count = count, project_name=project_name, query_suffix = query_suffix )       
+            sentence_and_template_generator(log=log,original_count=original_count,diction=diction,output_file=output_file, mother_ontology=mother_ontology,vessel=vessel,prop=prop_inside, suffix = suffix,count = count, project_name=project_name, query_suffix = query_suffix )       
                 
 
 
