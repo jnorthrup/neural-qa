@@ -82,7 +82,7 @@ def sentence_and_template_generator(log,mother_ontology,vessel,prop,project_name
        question_number=[3,4]
     elif(prop[3]=="Person"):
        question_number=[1,4]
-    elif(prop[3]=="xsd:date" or "date" in prop[3] or "year" in prop[3] or "date" in prop[3] or "time" in prop[3] ):
+    elif(prop[3]=="xsd:date" or "date" in prop[3] or "year" in prop[3].lower() or "date" in prop[3].lower() or "time" in prop[3].lower() ):
        question_number=[0,4,5]    
     elif(prop[3]=="xsd:nonNegativeInteger" or "negative" in prop[3].lower() ):
        question_number=[2,6]

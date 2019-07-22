@@ -7,6 +7,9 @@ from fetch_ranks_sub import fetch_ranks
 import logging
 
 def generate_templates(label,project_name,depth=1,output_file="sentence_and_template_generator"):
+    """
+    The function acts as a wrapper for the whole package of supplied source code.
+    """
     val = generate_url(label)
     url = val[0]
     about = (val[1])

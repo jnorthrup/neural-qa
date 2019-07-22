@@ -10,8 +10,8 @@ from collections import OrderedDict
 
 base = {"dataset":{"id": "stuff"}}
 base["questions"] = []
-question_lines = open('questions', 'r').readlines()
-lines = open('ref_example', 'r').readlines()
+question_lines = open('qald_json/test.en', 'r').readlines()
+lines = open('qald_json/test.sparql', 'r').readlines()
 lines = list(map(interpreter, tuple(lines)))
 
 for valu in range(len(lines)):
@@ -59,12 +59,13 @@ for valu in tqdm(range(len(lines))):
         que["answers"].append(answer_unit)
         accum.append(que)
 
-        if(count>10):break
+        if(count>10):
+                break
         
 base["questions"] = accum
 
 import json
-with open('data.json', 'w') as outfile:
+with open('qald_json/data.json', 'w') as outfile:
     json.dump(OrderedDict(base), outfile, ensure_ascii=False, indent=2)
 
 

@@ -1,3 +1,4 @@
+# Read the description in the supplied readme.md
 import argparse
 from generate_url import generate_url_spec , generate_url
 from get_properties import get_properties
@@ -40,8 +41,7 @@ def rank_check(query,diction,count,original_count):
                     print(diction(a.get_text())) """
             if(denom):
                 interaccum = interaccum/denom
-            accum+=interaccum
-            
+            accum+=interaccum      
     return float(accum/total)
 
 def check_query(log,query):
@@ -151,19 +151,3 @@ def sentence_and_template_generator(prop_dic,test_set,log,mother_ontology,vessel
             prop_inside = property_line.split(',')
             sentence_and_template_generator(prop_dic=prop_dic,test_set= test_set,log=log,original_count=original_count,diction=diction,output_file=output_file, mother_ontology=mother_ontology,vessel=vessel,prop=prop_inside, suffix = suffix,count = count, project_name=project_name, query_suffix = query_suffix )       
                 
-
-
-
-if __name__ == "__main__":
-    """
-    Section to parse the command line arguments.
-    """
-    parser = argparse.ArgumentParser()
-    requiredNamed = parser.add_argument_group('Required Arguments')
-
-    requiredNamed.add_argument('--prop', dest='prop', metavar='prop',
-                                                            help='prop: person, place etc.', required=True)
-    args = parser.parse_args()
-    prop = args.prop
-    sentence_and_template_generator(prop=prop)
-    pass

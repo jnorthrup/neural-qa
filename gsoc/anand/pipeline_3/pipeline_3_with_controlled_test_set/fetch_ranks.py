@@ -2,6 +2,9 @@ from tqdm import tqdm
 import numpy as np
 
 def fetch_ranks(filename='../utility/wikidata.rank'):
+    """
+    The function loads rank from a supplied position.
+    """
     sub = open(filename,'r').readlines()
     diction={}
 
