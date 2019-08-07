@@ -1,1 +1,1 @@
-select ?x where{<http://dbpedia.org/resource/Domestic_canary> dbo:species ?x1 . ?x1 dbo:abstract ?x }
+select ?x where{<http://dbpedia.org/resource/Chilean_pintail> dbo:species ?x1 . ?x1 dbo:wikiPageRevisionID ?x }

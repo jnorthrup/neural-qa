@@ -21,6 +21,8 @@ def rank_check(query,diction,count,original_count):
     #print(query)
     query = urllib.parse.quote(query)
     url = "https://dbpedia.org/sparql?default-graph-uri=http%3A%2F%2Fdbpedia.org&query="+query+"&format=text%2Fhtml&CXML_redir_for_subjs=121&CXML_redir_for_hrefs=&timeout=30000&debug=on&run=+Run+Query+"
+    # url = "https://dbpedia.org/sparql?default-graph-uri=http%3A%2F%2Fdbpedia.org&query="+query + \
+    #    "&format=application%2Fsparql-results%2Bjson&CXML_redir_for_subjs=121&CXML_redir_for_hrefs=&timeout=30000&debug=on&run=+Run+Query+"
     #print(url)
     page = urllib.request.urlopen(url)
     soup = BeautifulSoup(page, "html.parser")
