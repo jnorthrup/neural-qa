@@ -1,3 +1,12 @@
+""" 
+This code creates a test set making sure the following constraints are 
+followed: 
+- The vocabulary in the test set has been learned in a separate context in the 
+train set.
+- Frequency Thresholding: The vocabulary in the test set is present in the train 
+set for a given number of times.
+"""
+
 from tqdm import tqdm
 import json
 import os
@@ -6,7 +15,6 @@ import os
 train_vocab = open("vocab.sparql",'r').readlines()
 test_sparql = open("old_test.sparql",'r').readlines()
 train_sparql = open("train.sparql",'r').readlines()
-
 
 accum = []
 
@@ -33,22 +41,52 @@ for temp in dbo:
         dbo_dic[temp] = 0
 
 # Removing all the ontologies not present in the train vocabulary
-for lines in tqdm(test_sparql):
-    flag = 1
-    for words in dbo:
-        for wor in lines.split(" "):
-                if(words == wor.strip() and flag):
-                        flag = 0
-                        dbo_useful.append(lines)
-                        dbo_dic[words] += 1
-                        continue
-                if(words == wor.strip() and not flag):
-                        dbo_dic[words] += 1
-        if(flag == 0):
-                break
+for lines in tqdm(train_sparql):
+    flag = 0
+    for wor in lines.split(" "):
+        for words in dbo:
+                if(words == wor.strip()):
+                        flag = 1
+                        dbo_dic[wor] += 1
+        """ if(wor.strip().startswith("dbo") and not flag):
+                dbo_dic[wor] = 1
+                dbo.append(wor) """
     if(flag):
+        dbo_useful.append(lines)
+        accum.append(lines)
+accum = []
+dbo_value = json.dumps(dbo_dic)
+
+# Creating a dump of the frequency of the vacubulary counted.
+open("dbo_dump_train.json",'w').write(dbo_value)
+
+dbo_useful = []
+dbo_dic= {}
+for temp in dbo:
+        dbo_dic[temp] = 0
+
+# Removing all the ontologies not present in the train vocabulary
+for lines in tqdm(test_sparql):
+    flag = 0
+    for wor in lines.split(" "):
+        for words in dbo:
+                if(words == wor.strip()):
+                        flag = 1
+                        dbo_dic[wor] += 1
+                        continue
+        if(wor.strip().startswith("dbo") and wor.strip() not in dbo):
+                flag = 0
+                break
+        
+        """ if(wor.strip().startswith("dbo") and not flag):
+                dbo_dic[wor] = 1
+                dbo.append(wor) """
+
+    if(flag):
+        dbo_useful.append(lines)
         accum.append(lines)
 
+open("temp",'w').write("\n".join(dbo_useful))
 dbo_value = json.dumps(dbo_dic)
 # Creating a dump of the frequency of the vacubulary counted.
 open("dbo_dump.json",'w').write(dbo_value)

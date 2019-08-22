@@ -1,0 +1,1687 @@
+{
+  "questions": [
+    {
+      "question": [
+        {
+          "keywords": "binomial authority species university maryland arboretum & botanical garden ?", 
+          "string": "What is the binomial authority of species of university of maryland arboretum & botanical garden ?", 
+          "language": "en"
+        }
+      ], 
+      "hybrid": false, 
+      "aggregation": false, 
+      "answers": [
+        {
+          "head": {
+            "vars": [
+              "uri"
+            ]
+          }, 
+          "results": {
+            "bindings": [
+              {
+                "uri": {
+                  "type": "uri", 
+                  "value": "http://dbpedia.org/resource/Adrien_René_Franchet"
+                }
+              }
+            ]
+          }
+        }
+      ], 
+      "answertype": "resource", 
+      "onlydbo": true, 
+      "query": {
+        "sparql": "select ?x where{<http://dbpedia.org/resource/University_of_Maryland_Arboretum_&_Botanical_Garden> dbo:species ?x1 . ?x1 dbo:binomialAuthority ?x }"
+      }, 
+      "id": "0"
+    }, 
+    {
+      "question": [
+        {
+          "keywords": "binomial authority species cyclura cychlura figginsi ?", 
+          "string": "What is the binomial authority of species of cyclura cychlura figginsi ?", 
+          "language": "en"
+        }
+      ], 
+      "hybrid": false, 
+      "aggregation": false, 
+      "answers": [
+        {
+          "head": {
+            "vars": [
+              "uri"
+            ]
+          }, 
+          "results": {
+            "bindings": [
+              {
+                "uri": {
+                  "type": "uri", 
+                  "value": "http://dbpedia.org/resource/Georges_Cuvier"
+                }
+              }
+            ]
+          }
+        }
+      ], 
+      "answertype": "resource", 
+      "onlydbo": true, 
+      "query": {
+        "sparql": "select ?x where{<http://dbpedia.org/resource/Cyclura_cychlura_figginsi> dbo:species ?x1 . ?x1 dbo:binomialAuthority ?x }"
+      }, 
+      "id": "1"
+    }, 
+    {
+      "question": [
+        {
+          "keywords": "number binomial authority species cyclura cychlura figginsi ?", 
+          "string": "What is the number of binomial authority of species of cyclura cychlura figginsi ?", 
+          "language": "en"
+        }
+      ], 
+      "hybrid": false, 
+      "aggregation": false, 
+      "answers": [
+        {
+          "head": {
+            "vars": [
+              "uri"
+            ]
+          }, 
+          "results": {
+            "bindings": [
+              {
+                "uri": {
+                  "type": "typed-literal", 
+                  "value": "1"
+                }
+              }
+            ]
+          }
+        }
+      ], 
+      "answertype": "resource", 
+      "onlydbo": true, 
+      "query": {
+        "sparql": "select count(*) as ?x where{<http://dbpedia.org/resource/Cyclura_cychlura_figginsi> dbo:species ?x1 . ?x1 dbo:binomialAuthority ?x }"
+      }, 
+      "id": "2"
+    }, 
+    {
+      "question": [
+        {
+          "keywords": "number binomial authority species university maryland arboretum & botanical garden ?", 
+          "string": "What is the number of binomial authority of species of university of maryland arboretum & botanical garden ?", 
+          "language": "en"
+        }
+      ], 
+      "hybrid": false, 
+      "aggregation": false, 
+      "answers": [
+        {
+          "head": {
+            "vars": [
+              "uri"
+            ]
+          }, 
+          "results": {
+            "bindings": [
+              {
+                "uri": {
+                  "type": "typed-literal", 
+                  "value": "1"
+                }
+              }
+            ]
+          }
+        }
+      ], 
+      "answertype": "resource", 
+      "onlydbo": true, 
+      "query": {
+        "sparql": "select count(*) as ?x where{<http://dbpedia.org/resource/University_of_Maryland_Arboretum_&_Botanical_Garden> dbo:species ?x1 . ?x1 dbo:binomialAuthority ?x }"
+      }, 
+      "id": "3"
+    }, 
+    {
+      "question": [
+        {
+          "keywords": "conservation status species crotalus mitchellii muertensis ?", 
+          "string": "What is the conservation status of species of crotalus mitchellii muertensis ?", 
+          "language": "en"
+        }
+      ], 
+      "hybrid": false, 
+      "aggregation": false, 
+      "answers": [
+        {
+          "head": {
+            "vars": [
+              "uri"
+            ]
+          }, 
+          "results": {
+            "bindings": [
+              {
+                "uri": {
+                  "type": "literal", 
+                  "value": "LC"
+                }
+              }
+            ]
+          }
+        }
+      ], 
+      "answertype": "resource", 
+      "onlydbo": true, 
+      "query": {
+        "sparql": "select ?x where{<http://dbpedia.org/resource/Crotalus_mitchellii_muertensis> dbo:species ?x1 . ?x1 dbo:conservationStatus ?x }"
+      }, 
+      "id": "4"
+    }, 
+    {
+      "question": [
+        {
+          "keywords": "conservation status species cyclura cychlura figginsi ?", 
+          "string": "What is the conservation status of species of cyclura cychlura figginsi ?", 
+          "language": "en"
+        }
+      ], 
+      "hybrid": false, 
+      "aggregation": false, 
+      "answers": [
+        {
+          "head": {
+            "vars": [
+              "uri"
+            ]
+          }, 
+          "results": {
+            "bindings": [
+              {
+                "uri": {
+                  "type": "literal", 
+                  "value": "VU"
+                }
+              }
+            ]
+          }
+        }
+      ], 
+      "answertype": "resource", 
+      "onlydbo": true, 
+      "query": {
+        "sparql": "select ?x where{<http://dbpedia.org/resource/Cyclura_cychlura_figginsi> dbo:species ?x1 . ?x1 dbo:conservationStatus ?x }"
+      }, 
+      "id": "5"
+    }, 
+    {
+      "question": [
+        {
+          "keywords": "number conservation status species crotalus mitchellii muertensis ?", 
+          "string": "What is the number of conservation status of species of crotalus mitchellii muertensis ?", 
+          "language": "en"
+        }
+      ], 
+      "hybrid": false, 
+      "aggregation": false, 
+      "answers": [
+        {
+          "head": {
+            "vars": [
+              "uri"
+            ]
+          }, 
+          "results": {
+            "bindings": [
+              {
+                "uri": {
+                  "type": "typed-literal", 
+                  "value": "1"
+                }
+              }
+            ]
+          }
+        }
+      ], 
+      "answertype": "resource", 
+      "onlydbo": true, 
+      "query": {
+        "sparql": "select count(*) as ?x where{<http://dbpedia.org/resource/Crotalus_mitchellii_muertensis> dbo:species ?x1 . ?x1 dbo:conservationStatus ?x }"
+      }, 
+      "id": "6"
+    }, 
+    {
+      "question": [
+        {
+          "keywords": "number conservation status species cyclura cychlura figginsi ?", 
+          "string": "What is the number of conservation status of species of cyclura cychlura figginsi ?", 
+          "language": "en"
+        }
+      ], 
+      "hybrid": false, 
+      "aggregation": false, 
+      "answers": [
+        {
+          "head": {
+            "vars": [
+              "uri"
+            ]
+          }, 
+          "results": {
+            "bindings": [
+              {
+                "uri": {
+                  "type": "typed-literal", 
+                  "value": "1"
+                }
+              }
+            ]
+          }
+        }
+      ], 
+      "answertype": "resource", 
+      "onlydbo": true, 
+      "query": {
+        "sparql": "select count(*) as ?x where{<http://dbpedia.org/resource/Cyclura_cychlura_figginsi> dbo:species ?x1 . ?x1 dbo:conservationStatus ?x }"
+      }, 
+      "id": "7"
+    }, 
+    {
+      "question": [
+        {
+          "keywords": "conservation status system species cyclura cychlura figginsi ?", 
+          "string": "What is the conservation status system of species of cyclura cychlura figginsi ?", 
+          "language": "en"
+        }
+      ], 
+      "hybrid": false, 
+      "aggregation": false, 
+      "answers": [
+        {
+          "head": {
+            "vars": [
+              "uri"
+            ]
+          }, 
+          "results": {
+            "bindings": [
+              {
+                "uri": {
+                  "type": "literal", 
+                  "value": "IUCN3.1"
+                }
+              }
+            ]
+          }
+        }
+      ], 
+      "answertype": "resource", 
+      "onlydbo": true, 
+      "query": {
+        "sparql": "select ?x where{<http://dbpedia.org/resource/Cyclura_cychlura_figginsi> dbo:species ?x1 . ?x1 dbo:conservationStatusSystem ?x }"
+      }, 
+      "id": "8"
+    }, 
+    {
+      "question": [
+        {
+          "keywords": "conservation status system species crotalus mitchellii muertensis ?", 
+          "string": "What is the conservation status system of species of crotalus mitchellii muertensis ?", 
+          "language": "en"
+        }
+      ], 
+      "hybrid": false, 
+      "aggregation": false, 
+      "answers": [
+        {
+          "head": {
+            "vars": [
+              "uri"
+            ]
+          }, 
+          "results": {
+            "bindings": [
+              {
+                "uri": {
+                  "type": "literal", 
+                  "value": "iucn3.1"
+                }
+              }
+            ]
+          }
+        }
+      ], 
+      "answertype": "resource", 
+      "onlydbo": true, 
+      "query": {
+        "sparql": "select ?x where{<http://dbpedia.org/resource/Crotalus_mitchellii_muertensis> dbo:species ?x1 . ?x1 dbo:conservationStatusSystem ?x }"
+      }, 
+      "id": "9"
+    }, 
+    {
+      "question": [
+        {
+          "keywords": "number conservation status system species cyclura cychlura figginsi ?", 
+          "string": "What is the number of conservation status system of species of cyclura cychlura figginsi ?", 
+          "language": "en"
+        }
+      ], 
+      "hybrid": false, 
+      "aggregation": false, 
+      "answers": [
+        {
+          "head": {
+            "vars": [
+              "uri"
+            ]
+          }, 
+          "results": {
+            "bindings": [
+              {
+                "uri": {
+                  "type": "typed-literal", 
+                  "value": "1"
+                }
+              }
+            ]
+          }
+        }
+      ], 
+      "answertype": "resource", 
+      "onlydbo": true, 
+      "query": {
+        "sparql": "select count(*) as ?x where{<http://dbpedia.org/resource/Cyclura_cychlura_figginsi> dbo:species ?x1 . ?x1 dbo:conservationStatusSystem ?x }"
+      }, 
+      "id": "10"
+    }, 
+    {
+      "question": [
+        {
+          "keywords": "number conservation status system species crotalus mitchellii muertensis ?", 
+          "string": "What is the number of conservation status system of species of crotalus mitchellii muertensis ?", 
+          "language": "en"
+        }
+      ], 
+      "hybrid": false, 
+      "aggregation": false, 
+      "answers": [
+        {
+          "head": {
+            "vars": [
+              "uri"
+            ]
+          }, 
+          "results": {
+            "bindings": [
+              {
+                "uri": {
+                  "type": "typed-literal", 
+                  "value": "1"
+                }
+              }
+            ]
+          }
+        }
+      ], 
+      "answertype": "resource", 
+      "onlydbo": true, 
+      "query": {
+        "sparql": "select count(*) as ?x where{<http://dbpedia.org/resource/Crotalus_mitchellii_muertensis> dbo:species ?x1 . ?x1 dbo:conservationStatusSystem ?x }"
+      }, 
+      "id": "11"
+    }, 
+    {
+      "question": [
+        {
+          "keywords": "division species university maryland arboretum & botanical garden ?", 
+          "string": "What is the division of species of university of maryland arboretum & botanical garden ?", 
+          "language": "en"
+        }
+      ], 
+      "hybrid": false, 
+      "aggregation": false, 
+      "answers": [
+        {
+          "head": {
+            "vars": [
+              "uri"
+            ]
+          }, 
+          "results": {
+            "bindings": [
+              {
+                "uri": {
+                  "type": "uri", 
+                  "value": "http://dbpedia.org/resource/Angiosperms"
+                }
+              }
+            ]
+          }
+        }
+      ], 
+      "answertype": "resource", 
+      "onlydbo": true, 
+      "query": {
+        "sparql": "select ?x where{<http://dbpedia.org/resource/University_of_Maryland_Arboretum_&_Botanical_Garden> dbo:species ?x1 . ?x1 dbo:division ?x }"
+      }, 
+      "id": "12"
+    }, 
+    {
+      "question": [
+        {
+          "keywords": "number division species university maryland arboretum & botanical garden ?", 
+          "string": "What is the number of division of species of university of maryland arboretum & botanical garden ?", 
+          "language": "en"
+        }
+      ], 
+      "hybrid": false, 
+      "aggregation": false, 
+      "answers": [
+        {
+          "head": {
+            "vars": [
+              "uri"
+            ]
+          }, 
+          "results": {
+            "bindings": [
+              {
+                "uri": {
+                  "type": "typed-literal", 
+                  "value": "1"
+                }
+              }
+            ]
+          }
+        }
+      ], 
+      "answertype": "resource", 
+      "onlydbo": true, 
+      "query": {
+        "sparql": "select count(*) as ?x where{<http://dbpedia.org/resource/University_of_Maryland_Arboretum_&_Botanical_Garden> dbo:species ?x1 . ?x1 dbo:division ?x }"
+      }, 
+      "id": "13"
+    }, 
+    {
+      "question": [
+        {
+          "keywords": "family species crotalus mitchellii muertensis ?", 
+          "string": "What is the family of species of crotalus mitchellii muertensis ?", 
+          "language": "en"
+        }
+      ], 
+      "hybrid": false, 
+      "aggregation": false, 
+      "answers": [
+        {
+          "head": {
+            "vars": [
+              "uri"
+            ]
+          }, 
+          "results": {
+            "bindings": [
+              {
+                "uri": {
+                  "type": "uri", 
+                  "value": "http://dbpedia.org/resource/Viperidae"
+                }
+              }, 
+              {
+                "uri": {
+                  "type": "uri", 
+                  "value": "http://dbpedia.org/resource/Crotalinae"
+                }
+              }
+            ]
+          }
+        }
+      ], 
+      "answertype": "resource", 
+      "onlydbo": true, 
+      "query": {
+        "sparql": "select ?x where{<http://dbpedia.org/resource/Crotalus_mitchellii_muertensis> dbo:species ?x1 . ?x1 dbo:family ?x }"
+      }, 
+      "id": "14"
+    }, 
+    {
+      "question": [
+        {
+          "keywords": "family species university maryland arboretum & botanical garden ?", 
+          "string": "What is the family of species of university of maryland arboretum & botanical garden ?", 
+          "language": "en"
+        }
+      ], 
+      "hybrid": false, 
+      "aggregation": false, 
+      "answers": [
+        {
+          "head": {
+            "vars": [
+              "uri"
+            ]
+          }, 
+          "results": {
+            "bindings": [
+              {
+                "uri": {
+                  "type": "uri", 
+                  "value": "http://dbpedia.org/resource/Sapindaceae"
+                }
+              }
+            ]
+          }
+        }
+      ], 
+      "answertype": "resource", 
+      "onlydbo": true, 
+      "query": {
+        "sparql": "select ?x where{<http://dbpedia.org/resource/University_of_Maryland_Arboretum_&_Botanical_Garden> dbo:species ?x1 . ?x1 dbo:family ?x }"
+      }, 
+      "id": "15"
+    }, 
+    {
+      "question": [
+        {
+          "keywords": "family species cyclura cychlura figginsi ?", 
+          "string": "What is the family of species of cyclura cychlura figginsi ?", 
+          "language": "en"
+        }
+      ], 
+      "hybrid": false, 
+      "aggregation": false, 
+      "answers": [
+        {
+          "head": {
+            "vars": [
+              "uri"
+            ]
+          }, 
+          "results": {
+            "bindings": [
+              {
+                "uri": {
+                  "type": "uri", 
+                  "value": "http://dbpedia.org/resource/Iguanidae"
+                }
+              }
+            ]
+          }
+        }
+      ], 
+      "answertype": "resource", 
+      "onlydbo": true, 
+      "query": {
+        "sparql": "select ?x where{<http://dbpedia.org/resource/Cyclura_cychlura_figginsi> dbo:species ?x1 . ?x1 dbo:family ?x }"
+      }, 
+      "id": "16"
+    }, 
+    {
+      "question": [
+        {
+          "keywords": "genus species university maryland arboretum & botanical garden ?", 
+          "string": "What is the genus of species of university of maryland arboretum & botanical garden ?", 
+          "language": "en"
+        }
+      ], 
+      "hybrid": false, 
+      "aggregation": false, 
+      "answers": [
+        {
+          "head": {
+            "vars": [
+              "uri"
+            ]
+          }, 
+          "results": {
+            "bindings": [
+              {
+                "uri": {
+                  "type": "uri", 
+                  "value": "http://dbpedia.org/resource/Maple"
+                }
+              }
+            ]
+          }
+        }
+      ], 
+      "answertype": "resource", 
+      "onlydbo": true, 
+      "query": {
+        "sparql": "select ?x where{<http://dbpedia.org/resource/University_of_Maryland_Arboretum_&_Botanical_Garden> dbo:species ?x1 . ?x1 dbo:genus ?x }"
+      }, 
+      "id": "17"
+    }, 
+    {
+      "question": [
+        {
+          "keywords": "number genus species university maryland arboretum & botanical garden ?", 
+          "string": "What is the number of genus of species of university of maryland arboretum & botanical garden ?", 
+          "language": "en"
+        }
+      ], 
+      "hybrid": false, 
+      "aggregation": false, 
+      "answers": [
+        {
+          "head": {
+            "vars": [
+              "uri"
+            ]
+          }, 
+          "results": {
+            "bindings": [
+              {
+                "uri": {
+                  "type": "typed-literal", 
+                  "value": "1"
+                }
+              }
+            ]
+          }
+        }
+      ], 
+      "answertype": "resource", 
+      "onlydbo": true, 
+      "query": {
+        "sparql": "select count(*) as ?x where{<http://dbpedia.org/resource/University_of_Maryland_Arboretum_&_Botanical_Garden> dbo:species ?x1 . ?x1 dbo:genus ?x }"
+      }, 
+      "id": "18"
+    }, 
+    {
+      "question": [
+        {
+          "keywords": "kingdom species cyclura cychlura figginsi ?", 
+          "string": "What is the kingdom of species of cyclura cychlura figginsi ?", 
+          "language": "en"
+        }
+      ], 
+      "hybrid": false, 
+      "aggregation": false, 
+      "answers": [
+        {
+          "head": {
+            "vars": [
+              "uri"
+            ]
+          }, 
+          "results": {
+            "bindings": [
+              {
+                "uri": {
+                  "type": "uri", 
+                  "value": "http://dbpedia.org/resource/Animal"
+                }
+              }
+            ]
+          }
+        }
+      ], 
+      "answertype": "resource", 
+      "onlydbo": true, 
+      "query": {
+        "sparql": "select ?x where{<http://dbpedia.org/resource/Cyclura_cychlura_figginsi> dbo:species ?x1 . ?x1 dbo:kingdom ?x }"
+      }, 
+      "id": "19"
+    }, 
+    {
+      "question": [
+        {
+          "keywords": "kingdom species university maryland arboretum & botanical garden ?", 
+          "string": "What is the kingdom of species of university of maryland arboretum & botanical garden ?", 
+          "language": "en"
+        }
+      ], 
+      "hybrid": false, 
+      "aggregation": false, 
+      "answers": [
+        {
+          "head": {
+            "vars": [
+              "uri"
+            ]
+          }, 
+          "results": {
+            "bindings": [
+              {
+                "uri": {
+                  "type": "uri", 
+                  "value": "http://dbpedia.org/resource/Plantae"
+                }
+              }
+            ]
+          }
+        }
+      ], 
+      "answertype": "resource", 
+      "onlydbo": true, 
+      "query": {
+        "sparql": "select ?x where{<http://dbpedia.org/resource/University_of_Maryland_Arboretum_&_Botanical_Garden> dbo:species ?x1 . ?x1 dbo:kingdom ?x }"
+      }, 
+      "id": "20"
+    }, 
+    {
+      "question": [
+        {
+          "keywords": "kingdom species crotalus mitchellii muertensis ?", 
+          "string": "What is the kingdom of species of crotalus mitchellii muertensis ?", 
+          "language": "en"
+        }
+      ], 
+      "hybrid": false, 
+      "aggregation": false, 
+      "answers": [
+        {
+          "head": {
+            "vars": [
+              "uri"
+            ]
+          }, 
+          "results": {
+            "bindings": [
+              {
+                "uri": {
+                  "type": "uri", 
+                  "value": "http://dbpedia.org/resource/Animal"
+                }
+              }
+            ]
+          }
+        }
+      ], 
+      "answertype": "resource", 
+      "onlydbo": true, 
+      "query": {
+        "sparql": "select ?x where{<http://dbpedia.org/resource/Crotalus_mitchellii_muertensis> dbo:species ?x1 . ?x1 dbo:kingdom ?x }"
+      }, 
+      "id": "21"
+    }, 
+    {
+      "question": [
+        {
+          "keywords": "number kingdom species cyclura cychlura figginsi ?", 
+          "string": "What is the number of kingdom of species of cyclura cychlura figginsi ?", 
+          "language": "en"
+        }
+      ], 
+      "hybrid": false, 
+      "aggregation": false, 
+      "answers": [
+        {
+          "head": {
+            "vars": [
+              "uri"
+            ]
+          }, 
+          "results": {
+            "bindings": [
+              {
+                "uri": {
+                  "type": "typed-literal", 
+                  "value": "1"
+                }
+              }
+            ]
+          }
+        }
+      ], 
+      "answertype": "resource", 
+      "onlydbo": true, 
+      "query": {
+        "sparql": "select count(*) as ?x where{<http://dbpedia.org/resource/Cyclura_cychlura_figginsi> dbo:species ?x1 . ?x1 dbo:kingdom ?x }"
+      }, 
+      "id": "22"
+    }, 
+    {
+      "question": [
+        {
+          "keywords": "number kingdom species university maryland arboretum & botanical garden ?", 
+          "string": "What is the number of kingdom of species of university of maryland arboretum & botanical garden ?", 
+          "language": "en"
+        }
+      ], 
+      "hybrid": false, 
+      "aggregation": false, 
+      "answers": [
+        {
+          "head": {
+            "vars": [
+              "uri"
+            ]
+          }, 
+          "results": {
+            "bindings": [
+              {
+                "uri": {
+                  "type": "typed-literal", 
+                  "value": "1"
+                }
+              }
+            ]
+          }
+        }
+      ], 
+      "answertype": "resource", 
+      "onlydbo": true, 
+      "query": {
+        "sparql": "select count(*) as ?x where{<http://dbpedia.org/resource/University_of_Maryland_Arboretum_&_Botanical_Garden> dbo:species ?x1 . ?x1 dbo:kingdom ?x }"
+      }, 
+      "id": "23"
+    }, 
+    {
+      "question": [
+        {
+          "keywords": "order (taxonomy) species cyclura cychlura figginsi ?", 
+          "string": "What is the order (taxonomy) of species of cyclura cychlura figginsi ?", 
+          "language": "en"
+        }
+      ], 
+      "hybrid": false, 
+      "aggregation": false, 
+      "answers": [
+        {
+          "head": {
+            "vars": [
+              "uri"
+            ]
+          }, 
+          "results": {
+            "bindings": [
+              {
+                "uri": {
+                  "type": "uri", 
+                  "value": "http://dbpedia.org/resource/Squamata"
+                }
+              }
+            ]
+          }
+        }
+      ], 
+      "answertype": "resource", 
+      "onlydbo": true, 
+      "query": {
+        "sparql": "select ?x where{<http://dbpedia.org/resource/Cyclura_cychlura_figginsi> dbo:species ?x1 . ?x1 dbo:order ?x }"
+      }, 
+      "id": "24"
+    }, 
+    {
+      "question": [
+        {
+          "keywords": "order (taxonomy) species university maryland arboretum & botanical garden ?", 
+          "string": "What is the order (taxonomy) of species of university of maryland arboretum & botanical garden ?", 
+          "language": "en"
+        }
+      ], 
+      "hybrid": false, 
+      "aggregation": false, 
+      "answers": [
+        {
+          "head": {
+            "vars": [
+              "uri"
+            ]
+          }, 
+          "results": {
+            "bindings": [
+              {
+                "uri": {
+                  "type": "uri", 
+                  "value": "http://dbpedia.org/resource/Sapindales"
+                }
+              }, 
+              {
+                "uri": {
+                  "type": "uri", 
+                  "value": "http://dbpedia.org/resource/Rosids"
+                }
+              }
+            ]
+          }
+        }
+      ], 
+      "answertype": "resource", 
+      "onlydbo": true, 
+      "query": {
+        "sparql": "select ?x where{<http://dbpedia.org/resource/University_of_Maryland_Arboretum_&_Botanical_Garden> dbo:species ?x1 . ?x1 dbo:order ?x }"
+      }, 
+      "id": "25"
+    }, 
+    {
+      "question": [
+        {
+          "keywords": "number order (taxonomy) species university maryland arboretum & botanical garden ?", 
+          "string": "What is the number of order (taxonomy) of species of university of maryland arboretum & botanical garden ?", 
+          "language": "en"
+        }
+      ], 
+      "hybrid": false, 
+      "aggregation": false, 
+      "answers": [
+        {
+          "head": {
+            "vars": [
+              "uri"
+            ]
+          }, 
+          "results": {
+            "bindings": [
+              {
+                "uri": {
+                  "type": "typed-literal", 
+                  "value": "2"
+                }
+              }
+            ]
+          }
+        }
+      ], 
+      "answertype": "resource", 
+      "onlydbo": true, 
+      "query": {
+        "sparql": "select count(*) as ?x where{<http://dbpedia.org/resource/University_of_Maryland_Arboretum_&_Botanical_Garden> dbo:species ?x1 . ?x1 dbo:order ?x }"
+      }, 
+      "id": "26"
+    }, 
+    {
+      "question": [
+        {
+          "keywords": "number order (taxonomy) species cyclura cychlura figginsi ?", 
+          "string": "What is the number of order (taxonomy) of species of cyclura cychlura figginsi ?", 
+          "language": "en"
+        }
+      ], 
+      "hybrid": false, 
+      "aggregation": false, 
+      "answers": [
+        {
+          "head": {
+            "vars": [
+              "uri"
+            ]
+          }, 
+          "results": {
+            "bindings": [
+              {
+                "uri": {
+                  "type": "typed-literal", 
+                  "value": "1"
+                }
+              }
+            ]
+          }
+        }
+      ], 
+      "answertype": "resource", 
+      "onlydbo": true, 
+      "query": {
+        "sparql": "select count(*) as ?x where{<http://dbpedia.org/resource/Cyclura_cychlura_figginsi> dbo:species ?x1 . ?x1 dbo:order ?x }"
+      }, 
+      "id": "27"
+    }, 
+    {
+      "question": [
+        {
+          "keywords": "phylum species cyclura cychlura figginsi ?", 
+          "string": "What is the phylum of species of cyclura cychlura figginsi ?", 
+          "language": "en"
+        }
+      ], 
+      "hybrid": false, 
+      "aggregation": false, 
+      "answers": [
+        {
+          "head": {
+            "vars": [
+              "uri"
+            ]
+          }, 
+          "results": {
+            "bindings": [
+              {
+                "uri": {
+                  "type": "uri", 
+                  "value": "http://dbpedia.org/resource/Chordate"
+                }
+              }
+            ]
+          }
+        }
+      ], 
+      "answertype": "resource", 
+      "onlydbo": true, 
+      "query": {
+        "sparql": "select ?x where{<http://dbpedia.org/resource/Cyclura_cychlura_figginsi> dbo:species ?x1 . ?x1 dbo:phylum ?x }"
+      }, 
+      "id": "28"
+    }, 
+    {
+      "question": [
+        {
+          "keywords": "phylum species crotalus mitchellii muertensis ?", 
+          "string": "What is the phylum of species of crotalus mitchellii muertensis ?", 
+          "language": "en"
+        }
+      ], 
+      "hybrid": false, 
+      "aggregation": false, 
+      "answers": [
+        {
+          "head": {
+            "vars": [
+              "uri"
+            ]
+          }, 
+          "results": {
+            "bindings": [
+              {
+                "uri": {
+                  "type": "uri", 
+                  "value": "http://dbpedia.org/resource/Chordata"
+                }
+              }, 
+              {
+                "uri": {
+                  "type": "uri", 
+                  "value": "http://dbpedia.org/resource/Vertebrate"
+                }
+              }
+            ]
+          }
+        }
+      ], 
+      "answertype": "resource", 
+      "onlydbo": true, 
+      "query": {
+        "sparql": "select ?x where{<http://dbpedia.org/resource/Crotalus_mitchellii_muertensis> dbo:species ?x1 . ?x1 dbo:phylum ?x }"
+      }, 
+      "id": "29"
+    }, 
+    {
+      "question": [
+        {
+          "keywords": "number phylum species cyclura cychlura figginsi ?", 
+          "string": "What is the number of phylum of species of cyclura cychlura figginsi ?", 
+          "language": "en"
+        }
+      ], 
+      "hybrid": false, 
+      "aggregation": false, 
+      "answers": [
+        {
+          "head": {
+            "vars": [
+              "uri"
+            ]
+          }, 
+          "results": {
+            "bindings": [
+              {
+                "uri": {
+                  "type": "typed-literal", 
+                  "value": "1"
+                }
+              }
+            ]
+          }
+        }
+      ], 
+      "answertype": "resource", 
+      "onlydbo": true, 
+      "query": {
+        "sparql": "select count(*) as ?x where{<http://dbpedia.org/resource/Cyclura_cychlura_figginsi> dbo:species ?x1 . ?x1 dbo:phylum ?x }"
+      }, 
+      "id": "30"
+    }, 
+    {
+      "question": [
+        {
+          "keywords": "number phylum species crotalus mitchellii muertensis ?", 
+          "string": "What is the number of phylum of species of crotalus mitchellii muertensis ?", 
+          "language": "en"
+        }
+      ], 
+      "hybrid": false, 
+      "aggregation": false, 
+      "answers": [
+        {
+          "head": {
+            "vars": [
+              "uri"
+            ]
+          }, 
+          "results": {
+            "bindings": [
+              {
+                "uri": {
+                  "type": "typed-literal", 
+                  "value": "2"
+                }
+              }
+            ]
+          }
+        }
+      ], 
+      "answertype": "resource", 
+      "onlydbo": true, 
+      "query": {
+        "sparql": "select count(*) as ?x where{<http://dbpedia.org/resource/Crotalus_mitchellii_muertensis> dbo:species ?x1 . ?x1 dbo:phylum ?x }"
+      }, 
+      "id": "31"
+    }, 
+    {
+      "question": [
+        {
+          "keywords": "synonym species crotalus mitchellii muertensis ?", 
+          "string": "What is the synonym of species of crotalus mitchellii muertensis ?", 
+          "language": "en"
+        }
+      ], 
+      "hybrid": false, 
+      "aggregation": false, 
+      "answers": [
+        {
+          "head": {
+            "vars": [
+              "uri"
+            ]
+          }, 
+          "results": {
+            "bindings": [
+              {
+                "uri": {
+                  "type": "literal", 
+                  "value": "(ex errore)"
+                }
+              }, 
+              {
+                "uri": {
+                  "type": "literal", 
+                  "value": "*C[rotalus]. mitchellii"
+                }
+              }, 
+              {
+                "uri": {
+                  "type": "literal", 
+                  "value": "*Caudisona mitchellii"
+                }
+              }, 
+              {
+                "uri": {
+                  "type": "literal", 
+                  "value": "*Crotalus Mitchellii[mitchellii ]"
+                }
+              }, 
+              {
+                "uri": {
+                  "type": "literal", 
+                  "value": "*Crotalus aureus"
+                }
+              }, 
+              {
+                "uri": {
+                  "type": "literal", 
+                  "value": "*Crotalus confluentus mitchelli"
+                }
+              }, 
+              {
+                "uri": {
+                  "type": "literal", 
+                  "value": "*Crotalus mitcheli[sic]"
+                }
+              }, 
+              {
+                "uri": {
+                  "type": "literal", 
+                  "value": "*Crotalus mitchelli"
+                }
+              }, 
+              {
+                "uri": {
+                  "type": "literal", 
+                  "value": "*Crotalus mitchelli mitchelli"
+                }
+              }, 
+              {
+                "uri": {
+                  "type": "literal", 
+                  "value": "*Crotalus mitchellii mitchellii"
+                }
+              }, 
+              {
+                "uri": {
+                  "type": "literal", 
+                  "value": "*Crotalus tigris mitchellii"
+                }
+              }, 
+              {
+                "uri": {
+                  "type": "literal", 
+                  "value": "*[Crotalus oreganus]Var. mitchellii"
+                }
+              }
+            ]
+          }
+        }
+      ], 
+      "answertype": "resource", 
+      "onlydbo": true, 
+      "query": {
+        "sparql": "select ?x where{<http://dbpedia.org/resource/Crotalus_mitchellii_muertensis> dbo:species ?x1 . ?x1 dbo:synonym ?x }"
+      }, 
+      "id": "32"
+    }, 
+    {
+      "question": [
+        {
+          "keywords": "number synonym species crotalus mitchellii muertensis ?", 
+          "string": "What is the number of synonym of species of crotalus mitchellii muertensis ?", 
+          "language": "en"
+        }
+      ], 
+      "hybrid": false, 
+      "aggregation": false, 
+      "answers": [
+        {
+          "head": {
+            "vars": [
+              "uri"
+            ]
+          }, 
+          "results": {
+            "bindings": [
+              {
+                "uri": {
+                  "type": "typed-literal", 
+                  "value": "12"
+                }
+              }
+            ]
+          }
+        }
+      ], 
+      "answertype": "resource", 
+      "onlydbo": true, 
+      "query": {
+        "sparql": "select count(*) as ?x where{<http://dbpedia.org/resource/Crotalus_mitchellii_muertensis> dbo:species ?x1 . ?x1 dbo:synonym ?x }"
+      }, 
+      "id": "33"
+    }, 
+    {
+      "question": [
+        {
+          "keywords": "link wikipage external page species crotalus mitchellii muertensis ?", 
+          "string": "What is the Link from a Wikipage to an external page of species of crotalus mitchellii muertensis ?", 
+          "language": "en"
+        }
+      ], 
+      "hybrid": false, 
+      "aggregation": false, 
+      "answers": [
+        {
+          "head": {
+            "vars": [
+              "uri"
+            ]
+          }, 
+          "results": {
+            "bindings": [
+              {
+                "uri": {
+                  "type": "uri", 
+                  "value": "http://www.californiaherps.com/snakes/pages/c.m.pyrrhus.html"
+                }
+              }, 
+              {
+                "uri": {
+                  "type": "uri", 
+                  "value": "http://www.sdnhm.org/fieldguide/herps/crot-ang.html"
+                }
+              }, 
+              {
+                "uri": {
+                  "type": "uri", 
+                  "value": "http://www.sdnhm.org/fieldguide/herps/crot-mit.html"
+                }
+              }
+            ]
+          }
+        }
+      ], 
+      "answertype": "resource", 
+      "onlydbo": true, 
+      "query": {
+        "sparql": "select ?x where{<http://dbpedia.org/resource/Crotalus_mitchellii_muertensis> dbo:species ?x1 . ?x1 dbo:wikiPageExternalLink ?x }"
+      }, 
+      "id": "34"
+    }, 
+    {
+      "question": [
+        {
+          "keywords": "number link wikipage external page species crotalus mitchellii muertensis ?", 
+          "string": "What is the number of Link from a Wikipage to an external page of species of crotalus mitchellii muertensis ?", 
+          "language": "en"
+        }
+      ], 
+      "hybrid": false, 
+      "aggregation": false, 
+      "answers": [
+        {
+          "head": {
+            "vars": [
+              "uri"
+            ]
+          }, 
+          "results": {
+            "bindings": [
+              {
+                "uri": {
+                  "type": "typed-literal", 
+                  "value": "3"
+                }
+              }
+            ]
+          }
+        }
+      ], 
+      "answertype": "resource", 
+      "onlydbo": true, 
+      "query": {
+        "sparql": "select count(*) as ?x where{<http://dbpedia.org/resource/Crotalus_mitchellii_muertensis> dbo:species ?x1 . ?x1 dbo:wikiPageExternalLink ?x }"
+      }, 
+      "id": "35"
+    }, 
+    {
+      "question": [
+        {
+          "keywords": "wikipage page id species university maryland arboretum & botanical garden ?", 
+          "string": "What is the Wikipage page ID of species of university of maryland arboretum & botanical garden ?", 
+          "language": "en"
+        }
+      ], 
+      "hybrid": false, 
+      "aggregation": false, 
+      "answers": [
+        {
+          "head": {
+            "vars": [
+              "uri"
+            ]
+          }, 
+          "results": {
+            "bindings": [
+              {
+                "uri": {
+                  "type": "typed-literal", 
+                  "value": "2177035"
+                }
+              }
+            ]
+          }
+        }
+      ], 
+      "answertype": "resource", 
+      "onlydbo": true, 
+      "query": {
+        "sparql": "select ?x where{<http://dbpedia.org/resource/University_of_Maryland_Arboretum_&_Botanical_Garden> dbo:species ?x1 . ?x1 dbo:wikiPageID ?x }"
+      }, 
+      "id": "36"
+    }, 
+    {
+      "question": [
+        {
+          "keywords": "wikipage page id species crotalus mitchellii muertensis ?", 
+          "string": "What is the Wikipage page ID of species of crotalus mitchellii muertensis ?", 
+          "language": "en"
+        }
+      ], 
+      "hybrid": false, 
+      "aggregation": false, 
+      "answers": [
+        {
+          "head": {
+            "vars": [
+              "uri"
+            ]
+          }, 
+          "results": {
+            "bindings": [
+              {
+                "uri": {
+                  "type": "typed-literal", 
+                  "value": "4885837"
+                }
+              }
+            ]
+          }
+        }
+      ], 
+      "answertype": "resource", 
+      "onlydbo": true, 
+      "query": {
+        "sparql": "select ?x where{<http://dbpedia.org/resource/Crotalus_mitchellii_muertensis> dbo:species ?x1 . ?x1 dbo:wikiPageID ?x }"
+      }, 
+      "id": "37"
+    }, 
+    {
+      "question": [
+        {
+          "keywords": "wikipage page id species cyclura cychlura figginsi ?", 
+          "string": "What is the Wikipage page ID of species of cyclura cychlura figginsi ?", 
+          "language": "en"
+        }
+      ], 
+      "hybrid": false, 
+      "aggregation": false, 
+      "answers": [
+        {
+          "head": {
+            "vars": [
+              "uri"
+            ]
+          }, 
+          "results": {
+            "bindings": [
+              {
+                "uri": {
+                  "type": "typed-literal", 
+                  "value": "12504280"
+                }
+              }
+            ]
+          }
+        }
+      ], 
+      "answertype": "resource", 
+      "onlydbo": true, 
+      "query": {
+        "sparql": "select ?x where{<http://dbpedia.org/resource/Cyclura_cychlura_figginsi> dbo:species ?x1 . ?x1 dbo:wikiPageID ?x }"
+      }, 
+      "id": "38"
+    }, 
+    {
+      "question": [
+        {
+          "keywords": "wikipage redirect species black-chinned emperor tamarin ?", 
+          "string": "What is the Wikipage redirect of species of black-chinned emperor tamarin ?", 
+          "language": "en"
+        }
+      ], 
+      "hybrid": false, 
+      "aggregation": false, 
+      "answers": [
+        {
+          "head": {
+            "vars": [
+              "uri"
+            ]
+          }, 
+          "results": {
+            "bindings": [
+              {
+                "uri": {
+                  "type": "uri", 
+                  "value": "http://dbpedia.org/resource/Emperor_tamarin"
+                }
+              }
+            ]
+          }
+        }
+      ], 
+      "answertype": "resource", 
+      "onlydbo": true, 
+      "query": {
+        "sparql": "select ?x where{<http://dbpedia.org/resource/Black-chinned_emperor_tamarin> dbo:species ?x1 . ?x1 dbo:wikiPageRedirects ?x }"
+      }, 
+      "id": "39"
+    }, 
+    {
+      "question": [
+        {
+          "keywords": "number wikipage redirect species black-chinned emperor tamarin ?", 
+          "string": "What is the number of Wikipage redirect of species of black-chinned emperor tamarin ?", 
+          "language": "en"
+        }
+      ], 
+      "hybrid": false, 
+      "aggregation": false, 
+      "answers": [
+        {
+          "head": {
+            "vars": [
+              "uri"
+            ]
+          }, 
+          "results": {
+            "bindings": [
+              {
+                "uri": {
+                  "type": "typed-literal", 
+                  "value": "1"
+                }
+              }
+            ]
+          }
+        }
+      ], 
+      "answertype": "resource", 
+      "onlydbo": true, 
+      "query": {
+        "sparql": "select count(*) as ?x where{<http://dbpedia.org/resource/Black-chinned_emperor_tamarin> dbo:species ?x1 . ?x1 dbo:wikiPageRedirects ?x }"
+      }, 
+      "id": "40"
+    }, 
+    {
+      "question": [
+        {
+          "keywords": "wikipage revision id species cyclura cychlura figginsi ?", 
+          "string": "What is the Wikipage revision ID of species of cyclura cychlura figginsi ?", 
+          "language": "en"
+        }
+      ], 
+      "hybrid": false, 
+      "aggregation": false, 
+      "answers": [
+        {
+          "head": {
+            "vars": [
+              "uri"
+            ]
+          }, 
+          "results": {
+            "bindings": [
+              {
+                "uri": {
+                  "type": "typed-literal", 
+                  "value": "744390791"
+                }
+              }
+            ]
+          }
+        }
+      ], 
+      "answertype": "resource", 
+      "onlydbo": true, 
+      "query": {
+        "sparql": "select ?x where{<http://dbpedia.org/resource/Cyclura_cychlura_figginsi> dbo:species ?x1 . ?x1 dbo:wikiPageRevisionID ?x }"
+      }, 
+      "id": "41"
+    }, 
+    {
+      "question": [
+        {
+          "keywords": "wikipage revision id species crotalus mitchellii muertensis ?", 
+          "string": "What is the Wikipage revision ID of species of crotalus mitchellii muertensis ?", 
+          "language": "en"
+        }
+      ], 
+      "hybrid": false, 
+      "aggregation": false, 
+      "answers": [
+        {
+          "head": {
+            "vars": [
+              "uri"
+            ]
+          }, 
+          "results": {
+            "bindings": [
+              {
+                "uri": {
+                  "type": "typed-literal", 
+                  "value": "732108722"
+                }
+              }
+            ]
+          }
+        }
+      ], 
+      "answertype": "resource", 
+      "onlydbo": true, 
+      "query": {
+        "sparql": "select ?x where{<http://dbpedia.org/resource/Crotalus_mitchellii_muertensis> dbo:species ?x1 . ?x1 dbo:wikiPageRevisionID ?x }"
+      }, 
+      "id": "42"
+    }, 
+    {
+      "question": [
+        {
+          "keywords": "wikipage revision id species university maryland arboretum & botanical garden ?", 
+          "string": "What is the Wikipage revision ID of species of university of maryland arboretum & botanical garden ?", 
+          "language": "en"
+        }
+      ], 
+      "hybrid": false, 
+      "aggregation": false, 
+      "answers": [
+        {
+          "head": {
+            "vars": [
+              "uri"
+            ]
+          }, 
+          "results": {
+            "bindings": [
+              {
+                "uri": {
+                  "type": "typed-literal", 
+                  "value": "742372185"
+                }
+              }
+            ]
+          }
+        }
+      ], 
+      "answertype": "resource", 
+      "onlydbo": true, 
+      "query": {
+        "sparql": "select ?x where{<http://dbpedia.org/resource/University_of_Maryland_Arboretum_&_Botanical_Garden> dbo:species ?x1 . ?x1 dbo:wikiPageRevisionID ?x }"
+      }, 
+      "id": "43"
+    }
+  ], 
+  "dataset": {
+    "id": "stuff"
+  }
+}
