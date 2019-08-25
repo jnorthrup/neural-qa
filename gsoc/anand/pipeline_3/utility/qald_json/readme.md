@@ -34,3 +34,10 @@
 	}]
 }
 ```
+- It requires the interpreter function to run this. Thus to use this please copy this folder to the main folder and copy the python file to the man folder, for your ease please run the following code.  
+
+```bash
+cp -r qald_json ../../../../
+cd ../../../../qald_json 
+cp qald_json_gerbil_input.py ../
+```
