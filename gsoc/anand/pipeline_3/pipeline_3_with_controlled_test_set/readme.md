@@ -134,7 +134,7 @@ http://mappings.dbpedia.org/server/ontology/classes/Person
 ```
 
 Corresponding page:
-![person_properties](static/person_properties.png)
+![person_properties](.images/person_properties.png)
 
 Part of extracted properties:
 
