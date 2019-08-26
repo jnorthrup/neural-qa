@@ -26,6 +26,7 @@ Pipeline 3 refers to the newest code implementation that was introducedas part o
 ### Eukaryotes
 
 With the following configuration:
+
 | Size  | Layers    | Dropout   | Attention Mechanism   | Embeddings |BLEU | Accuracy |
 |------ | ----------| --------  | -------------------   |------------|-----|---------|
 |128    |    2      |   0.7     | Scaled Luong          | Yes: SPARQL (RDF2VEC), English Previous embeddings | 93 | 63|
@@ -37,6 +38,7 @@ Grid search was done on this dataset to determine the best possible hyperparamet
 After successfully  completing the Grid search on the Eukaryotes data we moved on to checking the viability of the model on other ontologies namely Person. The data set was humongous compared to what we had dealt with earlier. The train set contained: 302277 queries and the test after thresholding contained: 113982 queries. We were still able to get some pretty interesting results for our best expected model configuration obtained from the grid search done earlier:
 
 With the following configuration:
+
 | Size  | Layers    | Dropout   | Attention Mechanism   | Embeddings |BLEU | Accuracy |
 |------ | ----------| --------  | -------------------   |------------|-----|---------|
 |128    |    2      |   0.7     | Scaled Luong          | Yes: SPARQL (RDF2VEC), English Previous embeddings | 80 | 40|
