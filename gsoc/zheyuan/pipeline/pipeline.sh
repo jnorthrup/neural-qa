@@ -87,7 +87,12 @@ fi
     # 3.1 Generate data.en/sparql
     cd ../../../  # [neural-qa]/gsoc/
 
-    mkdir ./data/$1
+    if [ ! -d ./data/$1 ]; then
+      mkdir ./data/$1
+    else
+      rm -rf ./data/$1
+      mkdir ./data/$1
+    fi
     python generator.py --templates ./gsoc/zheyuan/pipeline/$1/basic_sentence_and_template_generator_paraphrased --output ./data/$1 --examples $examples_per_template
     # 3.2 Generate vocab (simple tokenizing and normalization)
     cd ./gsoc/zheyuan/utility   # [neural-qa]/gsoc/zheyuan/utility
