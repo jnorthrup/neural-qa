@@ -130,7 +130,7 @@ fi
       sed -i "s/VECTOR_SIZE=.*/VECTOR_SIZE=$dimension/" demo.sh
       sed -i "s/VOCAB_MIN_COUNT=.*/VOCAB_MIN_COUNT=1/" demo.sh
     fi
-    ./demo.sh
+    sh ./demo.sh
     cp ./embed.txt ../data/$1/embed.sparql
 
     # 4. NMT training
