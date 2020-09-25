@@ -27,11 +27,11 @@ def get_pretrained_model(zip_file_url):
     print('Getting pretained model {}'.format(model_name))
 
     if not os.path.exists(folder_path):
-        os.system("curl --output ./t5_paraphraser.zip https://datascience-models-ramsri.s3.amazonaws.com/t5_paraphraser.zip")
-        os.system("unzip ./t5_paraphraser.zip -d ./t5_paraphraser")
-        # r = requests.get(zip_file_url)
-        # z = zipfile.ZipFile(io.BytesIO(r.content))
-        # z.extractall(folder_path)
+        # os.system("curl --output ./t5_paraphraser.zip https://datascience-models-ramsri.s3.amazonaws.com/t5_paraphraser.zip")
+        # os.system("unzip ./t5_paraphraser.zip -d ./t5_paraphraser")
+        r = requests.get(zip_file_url)
+        z = zipfile.ZipFile(io.BytesIO(r.content))
+        z.extractall(folder_path)
     else:
         print("Folder available: ", folder_path)
 
