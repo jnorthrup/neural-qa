@@ -11,9 +11,9 @@ seperator = "\t"
 const.URL = "https://datascience-models-ramsri.s3.amazonaws.com/t5_paraphraser.zip"
 
 def batch_paraphrase(templates_path, model_dir):
-    folder_path = get_pretrained_model(const.URL)
+    # folder_path = get_pretrained_model(const.URL)
     set_seed(42)
-    tokenizer, device, model = prepare_model(folder_path)
+    tokenizer, device, model = prepare_model()
     dir = os.path.realpath(templates_path)
     with open(dir, "r") as lines:
         with open(dir + "_paraphrased", "w") as w:
