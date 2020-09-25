@@ -189,8 +189,8 @@ if __name__ == "__main__":
     sentence = args.sentence
 
 
-    folder_path = get_pretrained_model(const.URL)
+    # folder_path = get_pretrained_model(const.URL)
     set_seed(42)
-    tokenizer, device, model = prepare_model(folder_path)
+    tokenizer, device, model = prepare_model()
     print(paraphrase_questions(tokenizer,device,model,sentence))
     pass
