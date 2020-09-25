@@ -51,9 +51,9 @@ def generate_templates(label,project_name,depth=1,output_file="basic_sentence_an
     # logger.error("This is an error message")
     # logger.critical("This is a critical message")
     if paraphraser:
-        folder_path = get_pretrained_model(const.URL)
+        # folder_path = get_pretrained_model(const.URL)
         set_seed(42)
-        tokenizer, device, model = prepare_model(folder_path)
+        tokenizer, device, model = prepare_model()
 
     if multi:
 

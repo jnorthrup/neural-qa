@@ -38,13 +38,13 @@ def get_pretrained_model(zip_file_url):
     print('Finish {}'.format(model_name))
     return folder_path
 
-def prepare_model(folder_path):
+def prepare_model():
     """
 
     @param folder_path: This path contains the pre-trained model
     @return: Tokenizer, Device, Model
     """
-    model = T5ForConditionalGeneration.from_pretrained(folder_path)
+    model = T5ForConditionalGeneration.from_pretrained('ramsrigouthamg/t5_paraphraser')
     tokenizer = T5Tokenizer.from_pretrained('t5-base')
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
