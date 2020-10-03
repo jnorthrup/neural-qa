@@ -107,7 +107,7 @@ fi
             unzip ./GloVe/glove.6B.zip -d ./GloVe/glove.6B
 
           else
-            ls ./GloVe/glove.6b
+            ls ./GloVe/glove.6B
         fi
 
     #   3.3.2 Fine-tune en and Train sparql
@@ -121,7 +121,7 @@ fi
       sed -i "" "s/SAVE_FILE=.*/SAVE_FILE=embed/" demo.sh
       sed -i "" "s/VECTOR_SIZE=.*/VECTOR_SIZE=$dimension/" demo.sh
       sed -i "" "s/VOCAB_MIN_COUNT=.*/VOCAB_MIN_COUNT=1/" demo.sh
-    elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+    elif [ "$(expr substr $(uname -s) 1 5)" = "Linux" ]; then
 
     # GNU/Linux
       echo "This is a Linux environment"
@@ -130,7 +130,7 @@ fi
       sed -i "s/VECTOR_SIZE=.*/VECTOR_SIZE=$dimension/" demo.sh
       sed -i "s/VOCAB_MIN_COUNT=.*/VOCAB_MIN_COUNT=1/" demo.sh
     fi
-    sh ./demo.sh
+    ./demo.sh
     cp ./embed.txt ../data/$1/embed.sparql
 
     # 4. NMT training
