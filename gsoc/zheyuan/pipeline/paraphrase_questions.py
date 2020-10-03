@@ -125,21 +125,21 @@ def pick_final_sentence(origin, candidates):
                     final_sentence = final_output
                 print(cos, wd, td, score)
     return final_sentence
-def pick_final_sentence_advanced( device, origin, candidates, model_dir=None):
+def pick_final_sentence_advanced( device, bert_model, bert_tokenizer, origin, candidates):
     """
     This advanced methode uses a fine-tuned BERT Classifier to determine whether a candidate is a good, neural or bad paraphrase
-    @param model_dir: the path of folder where the pre-trained model is saved
     @param device: Cuda or CPU
+    @param bert_model: Bert pretrained Sequence Classifier
+    @param bert_tokenizer: Bert Tokenizer
     @param origin: Orignial question
     @param candidates: Paraphrased candidates
     @return: Final question picked from the candidates via a score ranking mechanism
     """
-    if model_dir:
-        model, tokenizer = load_model(model_dir, device)
-        text_pairs = []
-        for candidate in candidates:
-            text_pairs.append([origin, candidate])
-        pred_labels = predict(device, text_pairs, model, tokenizer)
+
+    text_pairs = []
+    for candidate in candidates:
+        text_pairs.append([origin, candidate])
+    pred_labels = predict(device, text_pairs, bert_model, bert_tokenizer)
 
 
 
