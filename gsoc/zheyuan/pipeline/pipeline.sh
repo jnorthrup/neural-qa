@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # $1 -- The project's name -- String -- Required
 # $2 -- Dimension of the GloVe embeddings -- Integer [50|100|200|300] -- Optional, 300 by default
@@ -112,9 +112,9 @@ fi
 
     #   3.3.2 Fine-tune en and Train sparql
     cd ./GloVe
-    python glove_finetune.py --path ../../../../data/$1
+    python glove_finetune.py --path ../../../../data/$1 --dimension $dimension
     cd ../../../../GloVe
-    if [ "$(uname)" == "Darwin" ]; then
+    if [ "$(uname)" = "Darwin" ]; then
     # Mac OS X
       echo "This is a Mac OSX environment"
       sed -i "" "s/CORPUS=.*/CORPUS=data_s.sparql/" demo.sh
@@ -130,7 +130,9 @@ fi
       sed -i "s/VECTOR_SIZE=.*/VECTOR_SIZE=$dimension/" demo.sh
       sed -i "s/VOCAB_MIN_COUNT=.*/VOCAB_MIN_COUNT=1/" demo.sh
     fi
-    ./demo.sh
+    make
+    chmod -Rf 700 build/
+    sh ./demo.sh
     cp ./embed.txt ../data/$1/embed.sparql
 
     # 4. NMT training

@@ -88,6 +88,8 @@ if __name__=="__main__":
     dimension = args.dimension
 
     if dimension:
+        embed_path = "glove.6B/glove.6B."+dimension+"d.txt"
+        dimension = int(dimension)
         if dimension <= 50:
             dimension = 50
         elif dimension <= 100:
@@ -96,7 +98,7 @@ if __name__=="__main__":
             dimension = 200
         else:
             dimension = 300
-        finetune_glove(path,"glove.6B/glove.6B."+dimension+"d.txt", dimension=dimension)
+        finetune_glove(path, embed_path, dimension=dimension)
     else:
         finetune_glove(path, "glove.6B/glove.6B.300d.txt")
     pass

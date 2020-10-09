@@ -29,8 +29,6 @@ def sparql_vocab(project_path):
         for sentence in tqdm(lines):
             sentence = sentence.strip("\n")
             for word in sentence.split():
-                if word == "dbr_Flying_Legend":
-                    print(sentence)
                 vocab_sparql.append(word)
     vocab_sparql = list(set(vocab_sparql))
     with open(project_path+"/vocab.sparql", "w") as w:

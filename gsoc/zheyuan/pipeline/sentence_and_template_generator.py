@@ -90,6 +90,7 @@ def sentence_and_template_generator(prop_dic,test_set,log,mother_ontology,vessel
     query_starts_with = question_form[1].split(',')
     query_ends_with = question_form[2].split(',')
     question_number=[2]
+    # range
     if(prop[3]=="owl:Thing" or prop[3]=="xsd:string"):
         question_number=[2,4]
     elif(prop[3]=="Place"):
