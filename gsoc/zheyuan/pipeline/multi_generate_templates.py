@@ -25,7 +25,7 @@ def generate_templates(label,project_name,depth=1,output_file="basic_sentence_an
     count = 0
     vessel = []
     depth = int(depth)
-    diction = fetch_ranks("../utility/part-r-00000")
+
     if (not os.path.isdir(project_name)):
         os.makedirs(project_name)
     output_file = open(project_name + "/" + output_file, 'w')
@@ -59,30 +59,27 @@ def generate_templates(label,project_name,depth=1,output_file="basic_sentence_an
 
         match = re.findall(r'([a-zA-Z]+)[,|\]]', label)
         for ontology in match:
-            val = generate_url(ontology)
-            url = val[0]
-            about = (val[1])
+
+            url = "https://yago-knowledge.org/resource/schema:"+ontology
+
             list_of_property_information = get_properties(url=url, project_name=project_name,
                                                           output_file="get_properties.csv", multi=multi)
             for property_line in list_of_property_information:
                 count += 1
-                prop = property_line.split(',')
+                prop = property_line.split('\t')
                 print("**************\n" + str(prop))
                 if paraphraser:
                     basic_sentence_and_template_generator(original_count=depth, prop_dic=prop_dic, test_set=test_set,
-                                                    log=logger, diction=diction, output_file=output_file,
-                                                    mother_ontology=about.strip().replace(
-                                                        "http://dbpedia.org/ontology/", "dbo:"), vessel=vessel,
+                                                    log=logger, output_file=output_file,
+                                                    mother_ontology="schema:"+ontology, vessel=vessel,
                                                     project_name=project_name, prop=prop, suffix=" of <A> ?",
                                                     count=depth, expand_set=expand_set, tokenizer=tokenizer,
                                                     device=device, model=model, bert_model_dir=bert_model_dir)
                 else:
                     basic_sentence_and_template_generator(original_count=depth, prop_dic=prop_dic, test_set=test_set,
                                                     log=logger,
-                                                    diction=diction, output_file=output_file,
-                                                    mother_ontology=about.strip().replace(
-                                                        "http://dbpedia.org/ontology/",
-                                                        "dbo:"), vessel=vessel,
+                                                    output_file=output_file,
+                                                    mother_ontology="schema:"+ontology, vessel=vessel,
                                                     project_name=project_name, prop=prop, suffix=" of <A> ?",
                                                     count=depth)
 

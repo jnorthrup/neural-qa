@@ -12,15 +12,18 @@ Version 1.0.0
 import collections
 import http.client
 import json
+import xmltodict
 import logging
 import re
 import sys
 import urllib.request, urllib.parse, urllib.error
 import urllib.request, urllib.error, urllib.parse
 from functools import reduce
+from bs4 import BeautifulSoup
 
-ENDPOINT = "http://dbpedia.org/sparql"
-GRAPH = "http://dbpedia.org"
+
+ENDPOINT = "https://yago-knowledge.org/sparql/query"
+GRAPH = "https://yago-knowledge.org/"
 
 def log_statistics( used_resources, special_classes, not_instanced_templates ):
     total_number_of_resources = len(used_resources)
@@ -54,15 +57,48 @@ def query_dbpedia( query ):
     param["CXML_redir_for_hrefs"] = ""
     param["timeout"] = "600" 
     param["debug"] = "on"
+
+    query = "PREFIX schema: <http://schema.org/>\n" + query
+    data = {
+        "query": query
+    }
+    data = urllib.parse.urlencode(data)
+    data = bytes(data, encoding='utf-8')
+
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36',
+        "origin": "https://yago-knowledge.org",
+        "referer": "https://yago-knowledge.org/sparql",
+        "x-requested-with": "XMLHttpRequest",
+        "accept": "application/sparql-results+json,*/*;q=0.9",
+    }
+    req = urllib.request.Request(ENDPOINT, data=data, headers=headers)
+
     try:
-        resp = urllib.request.urlopen(ENDPOINT + "?" + urllib.parse.urlencode(param))
-        j = resp.read()
-        resp.close()
+        response = urllib.request.urlopen(req)
+        response = response.read().decode('utf-8')
+        results = json.loads(response)
+
+        # j = res.read()
+        # res.close()
+        # html = res.read().decode('utf-8')
+        # print("Json.load():",j)
+        # soup = BeautifulSoup(res, "html.parser")
+        # uris = soup.find_all("uri")
+        # results = []
+        # for uri in uris:
+        #     result = uri.getText()
+        #     results.append(result)
+        # print(results)
+
+        # resp = urllib.request.urlopen(ENDPOINT + "?" + urllib.parse.urlencode(param))
+        # j = resp.read()
+        # resp.close()
     except (urllib.error.HTTPError, http.client.BadStatusLine):
         logging.debug("*** Query error. Empty result set. ***")
         j = '{ "results": { "bindings": [] } }'
     sys.stdout.flush()
-    return json.loads(j)
+    return results
 
 
 def strip_brackets(s):
@@ -73,6 +109,8 @@ def strip_brackets(s):
 
 
 REPLACEMENTS = [
+    ['yago:','http://yago-knowledge.org/resource/', 'yago_'],
+    ['schema:', 'schema_'],
     ['dbo:', 'http://dbpedia.org/ontology/', 'dbo_'],
     ['dbp:', 'http://dbpedia.org/property/', 'dbp_'],
     ['dbc:', 'http://dbpedia.org/resource/Category:', 'dbc_'],
@@ -280,7 +318,7 @@ def splitIntoTripleParts (triple):
         return None
 
 def fix_URI(query):
-	query = re.sub(r"dbr:([^\s]+)" , r"<http://dbpedia.org/resource/\1>" , query)
+	query = re.sub(r"yago:([^\s]+)" , r"<http://yago-knowledge.org/resource/\1>" , query)
 	if query[-2:]=="}>":
 		query = query[:-2]+">}"
 	return query

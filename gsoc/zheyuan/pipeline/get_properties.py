@@ -1,4 +1,5 @@
 import urllib
+import urllib.request
 import json
 import sys
 import csv
@@ -10,14 +11,15 @@ from tqdm import tqdm
 
 def get_properties(url,  project_name="test_project", output_file = "get_properties.csv", multi=False):
     """
-    - This function extracts the information regarding : [Name, Label, Domain, Range] from a page like this :
-    http://mappings.dbpedia.org/server/ontology/classes/Place and saves it in a file in CSV format.
+    - This function extracts the information regarding : [Name, Range, Cardinality, All usages] from a page like this :
+    https://yago-knowledge.org/resource/schema:Airline and saves it in a file in CSV format.
     - This code on execution creates a csv which contains all the properties, ontology,
     class related information and data types as field values in each row.
     - This function also returns a 2D list of the information mentioned above to the calling
     function
     """
     page = urllib.request.urlopen(url)
+    print("Page received.")
     soup = BeautifulSoup(page, "html.parser")
     if(not os.path.isdir(project_name)):
         os.makedirs(project_name)
@@ -27,22 +29,24 @@ def get_properties(url,  project_name="test_project", output_file = "get_propert
         output_file = open(project_name+"/" + output_file, 'w', encoding="utf-8")
     fl = 0
     accum = []
-    for rows in tqdm(soup.find_all("tr")):
+    property_names = soup.find_all("th")
+    for i,rows in tqdm(enumerate(soup.find_all("tr"))):
+        property_names = soup.find_all("th")
         x = rows.find_all("td")
+
         if len(x) <= 2:
-            fl = 1
             continue
-        if fl == 1:
-            fl = 2
-            continue
-        name = rows.find_all("td")[0].get_text().replace(" (edit)", "")
-        label = rows.find_all("td")[1].get_text()
-        dom = rows.find_all("td")[2].get_text()
-        rng = rows.find_all("td")[3].get_text()
+        print(i, "x", len(x), x)
+
+        name = property_names[i+3].find_all("a")[0].get_text() # Need +3 because of the structure of the page
+
+        range = rows.find_all("td")[0].get_text()
+        cardinality = rows.find_all("td")[1].get_text()
+        usages = rows.find_all("td")[2].get_text()
         if rows.find_all("td")[0].find('a'):
             URL_name = ((rows.find_all("td")[0].find('a').attrs['href']))
 
-        final = name + "," + label + "," + dom + "," + rng 
+        final = name + "\t" + range + "\t" + cardinality + "\t" + usages
         #+ ","+ URL_name.split(':')[-1]
         accum.append(final)
         output_file.write(final+"\n")

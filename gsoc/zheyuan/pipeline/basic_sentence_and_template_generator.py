@@ -4,10 +4,12 @@ from generate_url import generate_url_spec, generate_url
 from get_properties import get_properties
 from paraphrase_questions import paraphrase_questions, pick_final_sentence, pick_final_sentence_advanced
 import urllib
+import urllib.request
 import urllib.parse
 from bs4 import BeautifulSoup
 import os
 import re
+import json
 from tqdm import tqdm
 
 
@@ -27,9 +29,7 @@ def rank_check(query, diction, count, original_count):
     except:  # python2
         query = urllib.quote_plus(query)
     url = "https://dbpedia.org/sparql?default-graph-uri=http%3A%2F%2Fdbpedia.org&query=" + query + "&format=text%2Fhtml&CXML_redir_for_subjs=121&CXML_redir_for_hrefs=&timeout=30000&debug=on&run=+Run+Query+"
-    # url = "https://dbpedia.org/sparql?default-graph-uri=http%3A%2F%2Fdbpedia.org&query="+query + \
-    #    "&format=application%2Fsparql-results%2Bjson&CXML_redir_for_subjs=121&CXML_redir_for_hrefs=&timeout=30000&debug=on&run=+Run+Query+"
-    # print(url)
+
     page = urllib.request.urlopen(url)
     soup = BeautifulSoup(page, "html.parser")
     total = len(soup.find_all("tr"))
@@ -54,36 +54,52 @@ def rank_check(query, diction, count, original_count):
 
 
 def check_query(log, query):
-    query_original = query
-    query = urllib.parse.quote_plus(query)
-    url = "https://dbpedia.org/sparql?default-graph-uri=http%3A%2F%2Fdbpedia.org&query=" + query + "&format=text%2Fhtml&CXML_redir_for_subjs=121&CXML_redir_for_hrefs=&timeout=30000&debug=on&run=+Run+Query+"
-    # print(url)
+
+    query = "PREFIX schema: <http://schema.org/>\n"+query
+
+    url = "https://yago-knowledge.org/sparql/query"
+    data = {
+        "query": query
+    }
+    data = urllib.parse.urlencode(data)
+    data = bytes(data, encoding='utf-8')
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36',
+    }
+    req = urllib.request.Request(url, data=data, headers=headers)
+    res = urllib.request.urlopen(req)
     try:
-        page = urllib.request.urlopen(url)
-        soup = BeautifulSoup(page, "html.parser")
-        # print((soup.text))
-        if (soup.text == "false"):
+
+
+        html = res.read().decode('utf-8')
+        soup = BeautifulSoup(html, "html.parser")
+        is_valid = soup.find_all("boolean")[0].getText()
+        # json_data = json.loads(html)
+        print(is_valid)
+        # soup = BeautifulSoup(page, "html.parser")
+        if (is_valid == "false"):
             log.error(url)
-            log.error(query_original)
+            log.error(query)
             return False
-        elif (soup.text == "true"):
+        elif (is_valid == "true"):
             # log.info(url)
             # log.info(query_original )
             return True
         else:
             log.error("Broken Link")
             log.error(url)
-            log.error(query_original)
+            log.error(query)
     except:
         print("Error, url: ", url)
 
 
 def basic_sentence_and_template_generator(prop_dic, test_set, log, mother_ontology, vessel, prop, project_name, output_file,
-                                    diction, expand_set=[], tokenizer=None, device=None, model=None, original_count=0,
+                                    expand_set=[], tokenizer=None, device=None, model=None, original_count=0,
                                     count=0, suffix=" of <A> ?", query_suffix="", bert_model_dir=None):
     seperator = "\t"
     if (type(prop) == str):
-        prop = prop.split(',')
+        prop = prop.split(seperator)
+    tmp_label = prop[0].replace("schema:","")
     # original_count = count
     natural_language_question = []
     sparql_query = []
@@ -94,49 +110,42 @@ def basic_sentence_and_template_generator(prop_dic, test_set, log, mother_ontolo
     query_starts_with = question_form[1].split(',')
     query_ends_with = question_form[2].split(',')
     question_number = [2]
-    if (prop[3] == "owl:Thing" or prop[3] == "xsd:string"):
-        question_number = [2]
-    elif (prop[3] == "Place"):
+    if (prop[1] == "schema:Place"):
         question_number = [3]
-    elif (prop[3] == "Person"):
+    elif (prop[1] == "schema:Person"):
         question_number = [1]
-    elif (prop[3] == "xsd:date" or "date" in prop[3] or "year" in prop[3] or "date" in prop[3] or "time" in prop[3]):
+    elif (prop[1] == "xsd:date" or "date" in prop[0] or "year" in prop[0]):
         question_number = [0]
-    elif (prop[3] == "xsd:nonNegativeInteger" or "negative" in prop[3].lower()):
-        question_number = [2]
-    elif (prop[3] == "xsd:integer" or "integer" in prop[3].lower()):
+    elif (prop[1] == "xsd:nonNegativeInteger" or "negative" in prop[3].lower()):
         question_number = [2]
     else:
         question_number = [2]
 
-    val = (generate_url_spec(prop[0]))
-    prop_link = val[0]
-    if (prop_link == "None" or prop_link == None):
-        return
-    derived = val[1]
-    prop_link = "dbo:" + prop_link.strip().split('http://dbpedia.org/ontology/')[-1]
+    # val = (generate_url_spec(prop[0]))
+    # prop_link = val[0]
+    # if (prop_link == "None" or prop_link == None):
+    #     return
+    prop_link = prop[0]
 
     for number in question_number:
-        original_question = question_starts_with[number] + prop[1] + suffix
+        original_question = question_starts_with[number] + tmp_label + suffix
         original_sparql = query_starts_with[number] + "where { <A>  " + query_suffix + prop_link + " ?x " + \
                           query_ends_with[number]
         natural_language_question.append(original_question)
         sparql_query.append(original_sparql)
 
     if (query_suffix == ""):
-        query_answer = ("select distinct(?a) where { ?a a " + mother_ontology+" ; " +prop_link+" []  } ")
+        query_answer = ("select distinct ?a where { ?a a " + mother_ontology+" ; " +prop_link+" []  } ")
     else:
-        query_answer = ("select distinct(?a) where { ?a " + query_suffix.split(" ")[
+        query_answer = ("select distinct ?a where { ?a " + query_suffix.split(" ")[
             0] + " [] . ?a  " + query_suffix + " " + prop_link + " ?x } ")
 
-    if (query_suffix == ""):
-        flag = (check_query(log=log, query=query_answer.replace("select distinct(?a)", "ask")))
-    else:
-        flag = (check_query(log=log, query=query_answer.replace("select distinct(?a)", "ask")))
+    flag = (check_query(log=log, query=query_answer.replace("select distinct ?a", "ask")))
+
     if (not flag):
         return
 
-    rank = rank_check(diction=diction, count=count, query=query_answer, original_count=original_count)
+    rank = prop[3]
 
     count = count - 1
     if (count == 0):
@@ -201,7 +210,7 @@ def basic_sentence_and_template_generator(prop_dic, test_set, log, mother_ontolo
         for property_line in tqdm(list_of_property_information):
             prop_inside = property_line.split(',')
             sentence_and_template_generator(expand_set=expand_set, prop_dic=prop_dic, test_set=test_set, log=log,
-                                            original_count=original_count, diction=diction, output_file=output_file,
+                                            original_count=original_count, output_file=output_file,
                                             mother_ontology=mother_ontology, vessel=vessel, prop=prop_inside,
                                             suffix=suffix, count=count, project_name=project_name,
                                             query_suffix=query_suffix, tokenizer=tokenizer, device=device, model=model)

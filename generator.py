@@ -26,6 +26,7 @@ import io
 from generator_utils import log_statistics, save_cache, query_dbpedia, strip_brackets, encode, read_template_file
 import importlib
 
+Replace_prefix = "http://yago-knowledge.org/resource/"
 CELEBRITY_LIST = [
     'dbo:Royalty',
     '<http://dbpedia.org/class/yago/Wikicat21st-centuryActors>',
@@ -73,6 +74,7 @@ def extract_bindings(data, template):
         for variable in variables:
             resource = match[variable]["value"]
             label = match["l" + variable]["value"]
+            # label = match[variable]["value"]
             binding[variable] = {'uri': resource, 'label': label}
             used_resources.update([resource])
         bindings.append(binding)
@@ -246,6 +248,7 @@ def get_results_of_generator_query(cache, template):
         if query in cache:
             results = cache[query]
             break
+        query+="\n LIMIT "+str(EXAMPLES_PER_TEMPLATE)
         logging.debug('{}. attempt generator_query: {}'.format(attempt, query))
         results = query_dbpedia(query)
         sufficient_examples = len(
@@ -276,7 +279,6 @@ def prepare_generator_query(template, add_type_requirements=True, do_special_cla
     generator_query = getattr(template, 'generator_query')
     target_classes = getattr(template, 'target_classes')
     variables = getattr(template, 'variables')
-
     for i, variable in enumerate(variables):
         generator_query = add_requirement(
             generator_query, LABEL_REPLACEMENT.format(variable=variable))
@@ -292,16 +294,17 @@ def prepare_generator_query(template, add_type_requirements=True, do_special_cla
                         ['({})'.format(c) for c in SPECIAL_CLASSES[normalized_target_class]])
                     generator_query = add_requirement(
                         generator_query, CLASSES_REPLACEMENT.format(variable=variable, classes=classes))
-                else:
-                    ontology_class = normalized_target_class
-                    generator_query = add_requirement(generator_query, CLASS_REPLACEMENT.format(
-                        variable=variable, ontology_class=ontology_class))
+                # else:
+                #     print("is class")
+                #     ontology_class = normalized_target_class
+                #     generator_query = add_requirement(generator_query, CLASS_REPLACEMENT.format(
+                #         variable=variable, ontology_class=ontology_class))
     return generator_query
 
 
 def normalize(ontology_class):
-    if str.startswith(ontology_class, 'http://dbpedia.org/ontology/'):
-        return str.replace(ontology_class, 'http://dbpedia.org/ontology/', 'dbo:')
+    if str.startswith(ontology_class, 'http://yago-knowledge.org/resource/'):
+        return str.replace(ontology_class, 'http://yago-knowledge.org/resource/', 'yago:')
     if str.startswith(ontology_class, 'http'):
         return '<{}>'.format(ontology_class)
     return ontology_class
