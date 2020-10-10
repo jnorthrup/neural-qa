@@ -37,14 +37,15 @@ def batch_paraphrase(templates_path, model_dir):
                 #     new_line = seperator.join(new_prop)
                 #
                 #     w.write(new_line)
-                new_prop = prop[:-1]
-                new_prop[3] = paraphrased
-                new_prop.append("Paraphrased \n")
-                new_line = seperator.join(new_prop)
-                w.write(new_line)
+                if paraphrased:
+                    new_prop = prop[:-1]
+                    new_prop[3] = paraphrased
+                    new_prop.append("Paraphrased \n")
+                    new_line = seperator.join(new_prop)
+                    w.write(new_line)
 
                 print("Paraphrase", new_line)
-                if model_dir:
+                if model_dir and advanced:
                     new_prop = prop[:-1]
 
                     new_prop[3] = advanced
