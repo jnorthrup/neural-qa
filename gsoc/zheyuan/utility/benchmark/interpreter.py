@@ -1,4 +1,5 @@
 import os
+import argparse
 
 def interprete(trained_model_folder):
     os.chdir('../../../../nmt')
@@ -24,6 +25,16 @@ if __name__ == "__main__":
     """
     Section to test the Interpreter.
     """
-    interprete('monument_300')
+    parser = argparse.ArgumentParser()
+    requiredNamed = parser.add_argument_group('Required Arguments')
+
+    requiredNamed.add_argument('--project', dest='project', metavar='project name',
+                               help='project name', required=False)
+    args = parser.parse_args()
+    project = args.project
+    if project:
+        interprete(project)
+    else:
+        interprete('monument_300')
     pass
 
