@@ -92,6 +92,16 @@ def check_query(log, query):
     except:
         print("Error, url: ", url)
 
+def get_splitted_name(humped_name):
+    """
+    This function helps to split the humped label of yago into space splitted labels
+    """
+    word=[]
+    for i, c in enumerate(humped_name):
+        if c.isupper() and i!=0:
+            word.append(" ")
+        word.append(c)
+    return "".join(word).lower()
 
 def basic_sentence_and_template_generator(prop_dic, test_set, log, mother_ontology, vessel, prop, project_name, output_file,
                                     expand_set=[], tokenizer=None, device=None, model=None, original_count=0,
@@ -100,6 +110,7 @@ def basic_sentence_and_template_generator(prop_dic, test_set, log, mother_ontolo
     if (type(prop) == str):
         prop = prop.split(seperator)
     tmp_label = prop[0].replace("schema:","")
+    tmp_label = get_splitted_name(tmp_label)
     # original_count = count
     natural_language_question = []
     sparql_query = []
