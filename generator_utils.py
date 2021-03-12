@@ -15,8 +15,12 @@ import json
 import logging
 import re
 import sys
-import urllib.request, urllib.parse, urllib.error
-import urllib.request, urllib.error, urllib.parse
+import urllib.error
+import urllib.error
+import urllib.parse
+import urllib.parse
+import urllib.request
+import urllib.request
 from functools import reduce
 
 ENDPOINT = "http://dbpedia.org/sparql"
@@ -174,7 +178,7 @@ def read_template_file(file):
     line_number = 1
     with open(file) as f:
         for line in f:
-            values = line[:-1].split('\t')
+            values = line[:-1].split(';')
             target_classes = [values[0] or None, values[1] or None, values[2] or None]
             question = values[3]
             query = values[4]

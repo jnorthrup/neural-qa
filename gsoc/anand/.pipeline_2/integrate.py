@@ -1,8 +1,8 @@
-import sys
 import argparse
+
 from tqdm import tqdm
+
 from get_properties import get_properties
-from tqdm import tqdm
 
 """
 How was the tsv file created in the first place?

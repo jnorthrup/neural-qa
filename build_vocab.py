@@ -10,11 +10,12 @@ Version 1.0.0
 
 Usage: python build_vocab.py data.en > vocab.en
 """
-import numpy as np
-from tensorflow.contrib import learn
-import sys
 import importlib
 import io
+# from tensorflow.contrib import learn
+import sys
+
+import tensorflow as tf
 
 importlib.reload(sys)
 
@@ -40,14 +41,20 @@ else:  # any other language
     max_document_length = max([len(x.split(" ")) for x in x_text])
 
     # Create the vocabularyprocessor object, setting the max lengh of the documents.
-    vocab_processor = learn.preprocessing.VocabularyProcessor(
-        max_document_length)
+    # vocab_processor = learn.preprocessing.VocabularyProcessor(max_document_length)
+    tokenizer  = tf.keras.preprocessing.text.Tokenizer(oov_token="<UNK>")
+    tokenizer.fit_on_texts(x_text)
 
     # Transform the documents using the vocabulary.
-    x = np.array(list(vocab_processor.fit_transform(x_text)))
+    # x = np.array(list(vocab_processor.fit_transform(x_text)))
+    x = tokenizer.texts_to_sequences(x_text)
 
     # Extract word:id mapping from the object.
-    vocab_dict = vocab_processor.vocabulary_._mapping
+    # vocab_dict = vocab_processor.vocabulary_._mapping
+
+    print(x[0])
+    exit(1)
+    vocab_dict = tokenizer.vocabulary_._mapping
 
     # Sort the vocabulary dictionary on the basis of values(id).
     # Both statements perform same task.

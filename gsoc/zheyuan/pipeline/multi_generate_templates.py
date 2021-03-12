@@ -1,12 +1,12 @@
 import argparse
-import argparse
 import re
+
 import tensorflow as tf
+
 tf.compat.v1.enable_eager_execution()
-from paraphrase_questions import get_pretrained_model,prepare_model,set_seed
+from paraphrase_questions import prepare_model,set_seed
 from get_properties import get_properties
 from generate_url import generate_url
-from sentence_and_template_generator import sentence_and_template_generator
 from basic_sentence_and_template_generator import basic_sentence_and_template_generator
 import os
 from fetch_ranks_sub import fetch_ranks

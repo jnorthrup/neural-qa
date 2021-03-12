@@ -9,11 +9,10 @@ https://arxiv.org/abs/1708.07624
 Version 1.0.0
 
 """
+import importlib
 import sys
-import re
 
 from generator_utils import decode, fix_URI
-import importlib
 
 if __name__ == '__main__':
     importlib.reload(sys)

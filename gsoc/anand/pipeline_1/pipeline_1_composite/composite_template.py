@@ -1,7 +1,12 @@
-import sys
 from range_place import range_place
 import argparse
 from tqdm import tqdm
+import argparse
+
+from tqdm import tqdm
+
+from range_place import range_place
+
 
 # RUN: python composite_template.py data/GS-v3.csv
 # Given format #

@@ -1,6 +1,7 @@
-import json
 import argparse
+import json
 import re
+
 
 def read_json(file):
     with open(file,'r') as load_f:

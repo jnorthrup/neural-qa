@@ -7,9 +7,10 @@ train set.
 set for a given number of times.
 """
 
-from tqdm import tqdm
 import json
 import os
+
+from tqdm import tqdm
 
 # Opening all the necessary fines and reading them.
 train_vocab = open("vocab.sparql",'r').readlines()

@@ -1,13 +1,11 @@
-import urllib
-import urllib.request
-import json
-import sys
-import csv
-import io
 import argparse
 import os
+import urllib
+import urllib.request
+
 from bs4 import BeautifulSoup
 from tqdm import tqdm
+
 
 def get_properties(url,  project_name="test_project", output_file = "get_properties.csv", multi=False):
     """

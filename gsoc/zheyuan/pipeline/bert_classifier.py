@@ -1,9 +1,9 @@
 import argparse
-import torch #version==1.6.0
-from transformers import BertTokenizer
-from transformers import BertForSequenceClassification
-import numpy as np
 
+import numpy as np
+import torch  # version==1.6.0
+from transformers import BertForSequenceClassification
+from transformers import BertTokenizer
 
 
 def load_model(model_dir, device):

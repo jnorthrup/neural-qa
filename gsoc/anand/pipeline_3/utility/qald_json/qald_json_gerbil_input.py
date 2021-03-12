@@ -1,13 +1,12 @@
-from sklearn.metrics import f1_score
-from interpreter import interpreter
-import os
-import numpy as np
-from nltk.corpus import stopwords
-import urllib
-from bs4 import BeautifulSoup
-from tqdm import tqdm
-from collections import OrderedDict
 import json
+import urllib
+from collections import OrderedDict
+
+from bs4 import BeautifulSoup
+from nltk.corpus import stopwords
+from tqdm import tqdm
+
+from interpreter import interpreter
 
 base = {"dataset":{"id": "stuff"}}
 base["questions"] = []

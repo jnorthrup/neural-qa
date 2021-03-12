@@ -10,9 +10,9 @@ Version 1.0.0
 
 """
 import argparse
-import random
-import os
 import io
+import os
+import random
 
 TRAINING_PERCENTAGE = 80
 TEST_PERCENTAGE = 10

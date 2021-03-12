@@ -1,7 +1,13 @@
-import sys
 from tqdm import tqdm
 import argparse
 from sparql_generator import sparql_generator
+import argparse
+
+from tqdm import tqdm
+
+from sparql_generator import sparql_generator
+
+
 # Given format #
 # ['Property', 'Label ', 'Range', 'Fuzzy Score', 'Comment about expr', 'URI', 'Number of Occurrences', 'MVE', 'Optimal Expression', 'SPARQL Query Template', 'Generator Query\r\n']
 

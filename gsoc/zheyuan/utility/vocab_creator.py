@@ -1,5 +1,7 @@
 import argparse
+
 from tqdm import tqdm
+
 
 def english_vocab(project_path):
     print("Creating english vocabulary")

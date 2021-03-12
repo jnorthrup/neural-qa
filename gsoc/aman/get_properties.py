@@ -1,5 +1,6 @@
-import urllib2, urllib, httplib, json, sys, csv, io
 import argparse
+
+import urllib2
 from bs4 import BeautifulSoup
 
 parser = argparse.ArgumentParser()

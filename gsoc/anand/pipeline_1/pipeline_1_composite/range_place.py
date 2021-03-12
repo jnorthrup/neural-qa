@@ -1,8 +1,9 @@
-import sys
 import argparse
-import os
-from  sparql_generator import sparql_generator
+
 from tqdm import tqdm
+
+from sparql_generator import sparql_generator
+
 
 def range_place(input_file, project_name, output_file="test_res.csv", url="Use a valid URL", uri_file="Proper URI file", namespace="Valid namespace"):
     if __name__ == "__main__":

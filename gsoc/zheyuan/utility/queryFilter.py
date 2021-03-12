@@ -1,7 +1,7 @@
 import re
-from tqdm import tqdm
-from bs4 import BeautifulSoup
 import urllib.request
+
+from bs4 import BeautifulSoup
 
 labels = ['publisher', 'leaderName', 'mayor', 'country', 'musicComposer', 'routeEnd', 'starring', 'targetAirport', 'timeZone', 'origin', 'architect', 'team', 'Holiday', 'party', 'language', 'activeYearsEndDate', 'Protein', 'founder', 'foundingDate', 'governmentType', 'deathDate', 'type', 'birthName', 'vicePresident', 'knownFor', 'birthYear', 'crosses', 'city', 'height', 'ingredient', 'spouse', 'battle', 'child', 'location', 'doctoralAdvisor', 'portrayer', 'wineRegion', 'influenced', 'Beverage', 'developer', 'programmingLanguage', 'completionDate', 'budget', 'Organisation', 'numberOfPages', 'Sport', 'deathCause', 'growingGrape', 'product', 'capital', 'bandMember', 'largestCity', 'director', 'mission', 'ethnicGroup', 'officialLanguage', 'leader', 'foundationPlace', 'writer', 'date', 'abbreviation', 'dissolutionDate', 'successor', 'runtime', 'sourceCountry', 'maximumDepth', 'numberOfLocations', 'currency', 'state', 'birthDate', 'series', 'firstAscentPerson', 'composer', 'creator', 'influencedBy', 'almaMater', 'presenter', 'editor', 'discoverer', 'areaTotal', 'restingPlace', 'deathPlace', 'class', 'populationTotal', 'alias', 'owner', 'author', 'birthPlace', 'award']
 ontologies = []

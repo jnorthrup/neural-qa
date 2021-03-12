@@ -11,17 +11,17 @@ Version 1.0.0
 """
 import argparse
 import collections
+import importlib
 import json
 import os
 import re
 import sys
-import urllib.request, urllib.parse, urllib.error
+from functools import reduce
+
 from pyparsing import ParseException
 from rdflib.plugins.sparql import parser
 
 from generator_utils import decode, extract_entities, extract_predicates
-from functools import reduce
-import importlib
 
 
 def analyse( translation ):

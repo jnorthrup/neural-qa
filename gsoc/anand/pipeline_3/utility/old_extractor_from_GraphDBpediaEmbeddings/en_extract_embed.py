@@ -1,4 +1,3 @@
-from tqdm import tqdm
 reader = open("pageRank.txt",'r')
 vocab = open("vocab.sparql",'r').readlines()
 count = 0

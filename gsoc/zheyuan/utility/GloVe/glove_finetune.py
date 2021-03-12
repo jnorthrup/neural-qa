@@ -1,10 +1,8 @@
 import argparse
 import csv
+
 import numpy as np
-from collections import Counter
-from nltk.corpus import brown
-from mittens import GloVe, Mittens
-from sklearn.feature_extraction import stop_words
+from mittens import Mittens
 from sklearn.feature_extraction.text import CountVectorizer
 
 

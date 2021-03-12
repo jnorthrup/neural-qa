@@ -1,5 +1,6 @@
-import os
 import argparse
+import os
+
 
 def interprete(trained_model_folder):
     os.chdir('../../../../nmt')

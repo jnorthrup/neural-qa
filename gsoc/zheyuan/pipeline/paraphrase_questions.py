@@ -1,16 +1,18 @@
-import tensorflow_hub as hub
-import tensorflow as tf
-import zipfile
 import requests, zipfile, io
+import argparse
 import os
 import re
-import argparse
+
+import io
+import requests
 import torch
-from transformers import T5ForConditionalGeneration,T5Tokenizer
+import zipfile
 # pip install transformers==2.9.0
 from constant import Constant
-from textual_similarity import similarities, minDistance, words_distance, tags_distance, has_NNP, count_NNP
-from bert_classifier import load_model, predict
+from transformers import T5ForConditionalGeneration, T5Tokenizer
+
+from bert_classifier import predict
+from textual_similarity import similarities, words_distance, tags_distance, has_NNP, count_NNP
 
 const = Constant()
 

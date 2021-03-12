@@ -1,10 +1,11 @@
 import argparse
-import os
-import json
-import sys
-import urllib.request
-import urllib.parse
 import http.client
+import json
+import os
+import sys
+import urllib.parse
+import urllib.request
+
 from bs4 import BeautifulSoup
 
 ENDPOINT = "http://dbpedia.org/sparql"

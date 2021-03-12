@@ -11,9 +11,9 @@ Version 0.1.0-akaha
 
 """
 import sys
-import re
 
-from generator_utils import decode,fix_URI
+from generator_utils import decode, fix_URI
+
 
 def interpreter(val):
     reload(sys)

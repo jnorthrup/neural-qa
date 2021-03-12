@@ -1,11 +1,9 @@
-import xmltodict
-import pprint
-import json
-import sys
-import urllib
-from urllib2 import urlopen
 import argparse
+import urllib
+
+import xmltodict
 from bs4 import BeautifulSoup
+from urllib2 import urlopen
 
 
 def get_url(url):

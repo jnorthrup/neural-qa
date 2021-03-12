@@ -1,14 +1,13 @@
 # Read the description in the supplied readme.md
-import argparse
+import urllib
+import urllib.parse
+
+from bs4 import BeautifulSoup
+from tqdm import tqdm
+
 from generate_url import generate_url_spec, generate_url
 from get_properties import get_properties
 from paraphrase_questions import paraphrase_questions, pick_final_sentence, pick_final_sentence_advanced
-import urllib
-import urllib.parse
-from bs4 import BeautifulSoup
-import os
-import re
-from tqdm import tqdm
 
 
 def rank_check(query, diction, count, original_count):

@@ -1,12 +1,14 @@
 import argparse
-from paraphrase_questions import get_pretrained_model,prepare_model,set_seed
-from get_properties import get_properties
-from generate_url import generate_url
-from sentence_and_template_generator import sentence_and_template_generator
-import os
-from fetch_ranks_sub import fetch_ranks
 import logging
+import os
+
 from constant import Constant
+
+from fetch_ranks_sub import fetch_ranks
+from generate_url import generate_url
+from get_properties import get_properties
+from paraphrase_questions import get_pretrained_model, prepare_model, set_seed
+from sentence_and_template_generator import sentence_and_template_generator
 
 const = Constant()
 

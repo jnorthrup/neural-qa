@@ -1,10 +1,12 @@
 import argparse
-from get_properties import get_properties
-from generate_url import generate_url
-from sentence_and_template_generator import sentence_and_template_generator
-import os
-from fetch_ranks_sub import fetch_ranks
 import logging
+import os
+
+from fetch_ranks_sub import fetch_ranks
+from generate_url import generate_url
+from get_properties import get_properties
+from sentence_and_template_generator import sentence_and_template_generator
+
 
 def generate_templates(label,project_name,depth=1,output_file="sentence_and_template_generator"):
     """

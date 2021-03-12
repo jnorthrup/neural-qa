@@ -12,6 +12,8 @@ Version 1.0.0
 import argparse
 import collections
 import datetime
+import importlib
+import io
 import json
 import logging
 import operator
@@ -20,11 +22,10 @@ import random
 import re
 import sys
 import traceback
+
 from tqdm import tqdm
-import io
 
 from generator_utils import log_statistics, save_cache, query_dbpedia, strip_brackets, encode, read_template_file
-import importlib
 
 CELEBRITY_LIST = [
     'dbo:Royalty',

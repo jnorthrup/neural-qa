@@ -1,6 +1,7 @@
-import json
+import os
+
 from tqdm import tqdm
-import os 
+
 index = open("index.csv").readlines()
 diction = {}
 missed_counter = 0

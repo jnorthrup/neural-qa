@@ -9,9 +9,10 @@ https://arxiv.org/abs/1708.07624
 Version 1.0.0
 
 """
+import operator
+
 import generator
 import generator_utils
-import operator
 
 
 def test_extract_variables():

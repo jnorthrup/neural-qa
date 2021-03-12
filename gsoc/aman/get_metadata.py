@@ -1,5 +1,9 @@
-import urllib2, urllib, httplib, json, sys
-from bs4 import BeautifulSoup
+import httplib
+import json
+import sys
+import urllib
+import urllib2
+
 reload(sys)
 sys.setdefaultencoding('utf-8')
 

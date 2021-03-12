@@ -11,12 +11,12 @@ Version 1.0.0
 """
 import argparse
 import collections
+import importlib
 import json
 import os
 import sys
 
 from generator_utils import encode, save_cache, extract_encoded_entities
-import importlib
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()

@@ -1,11 +1,12 @@
 import argparse
 import json
-from tqdm import tqdm
-from interpreter import interprete
-from extract_questions import read_json, write_to_ask
-from retrieve_answers import read_sparqls, retrieve
-from reconstruct_json import construct_json
 
+from tqdm import tqdm
+
+from extract_questions import read_json, write_to_ask
+from interpreter import interprete
+from reconstruct_json import construct_json
+from retrieve_answers import read_sparqls, retrieve
 
 
 def benchmark(trained_model, test_set, answer_file="answers.json"):

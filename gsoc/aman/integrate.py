@@ -1,4 +1,4 @@
-import sys, argparse
+import argparse
 
 parser = argparse.ArgumentParser()
 requiredNamed = parser.add_argument_group('Required Arguments');

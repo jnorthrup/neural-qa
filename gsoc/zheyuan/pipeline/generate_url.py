@@ -1,9 +1,7 @@
-import xmltodict
-import pprint
-import json
-import sys
-import urllib
 import argparse
+import urllib
+
+import xmltodict
 from bs4 import BeautifulSoup
 
 

@@ -1,13 +1,14 @@
-import math, argparse
-import numpy as np
-import tensorflow as tf
-import tensorflow_hub as hub
-import os
+import argparse
+import math
+
 import nltk
+import numpy as np
+import tensorflow_hub as hub
+
 nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
 nltk.download('universal_tagset')
-from nltk import pos_tag, word_tokenize, RegexpParser
+from nltk import pos_tag, word_tokenize
 
 from constant import Constant
 const = Constant()

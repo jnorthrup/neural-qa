@@ -1,4 +1,3 @@
-import json
 import argparse
 
 def question_generator(query):

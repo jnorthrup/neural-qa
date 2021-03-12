@@ -1,8 +1,10 @@
 import argparse
 import os
+
 import tensorflow as tf
+
 tf.compat.v1.enable_eager_execution()
-from paraphrase_questions import paraphrase_questions,get_pretrained_model,prepare_model,set_seed,pick_final_sentence, pick_final_sentence_advanced
+from paraphrase_questions import paraphrase_questions, prepare_model,set_seed,pick_final_sentence, pick_final_sentence_advanced
 from constant import Constant
 from bert_classifier import load_model
 

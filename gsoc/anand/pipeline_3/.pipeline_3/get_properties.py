@@ -1,13 +1,11 @@
-import urllib
-from urllib2 import urlopen
-import json
-import sys
-import csv
-import io
 import argparse
 import os
+import urllib
+
 from bs4 import BeautifulSoup
 from tqdm import tqdm
+from urllib2 import urlopen
+
 
 def get_properties(url,  project_name="test_project", output_file = "get_properties.csv"):
     """

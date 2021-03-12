@@ -1,6 +1,8 @@
 from __future__ import print_function
-import tensorflow as tf
+
 import numpy as np
+import tensorflow as tf
+
 """
 - The following code when run with proper model location is capable of extracting the trained embeddings of a given model.
 - The embeddings are present in the form: <word> <dimensions>

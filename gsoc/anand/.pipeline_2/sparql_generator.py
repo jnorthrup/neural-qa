@@ -1,7 +1,8 @@
-import sys
-from decision_tree import decision_tree
 import argparse
+
 from tqdm import tqdm
+
+from decision_tree import decision_tree
 
 """
 Section to parse the command line arguments.

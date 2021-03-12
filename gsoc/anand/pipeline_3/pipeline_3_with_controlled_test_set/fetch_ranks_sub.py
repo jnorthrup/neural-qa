@@ -1,5 +1,5 @@
 from tqdm import tqdm
-import numpy as np
+
 
 def fetch_ranks(filename='part-r-00000'):
     """
